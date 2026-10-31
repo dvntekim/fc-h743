@@ -4,8 +4,8 @@
 > Work through [REVIEW.md](REVIEW.md) before anyone pays for boards.
 
 **View it in the browser (no install):**
-- PCB: <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/blob/main/kicad/fc.kicad_pcb>
-- Schematic: <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/blob/main/kicad/fc.kicad_sch>
+- Whole project (board + all 7 schematic sheets): <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/tree/main/kicad>
+- PCB only: <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/blob/main/kicad/fc.kicad_pcb>
 - PDF schematic: [docs/schematic.pdf](docs/schematic.pdf)
 
 | Top | Bottom |
