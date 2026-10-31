@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# dvntekim fch743 board sensors init
+#------------------------------------------------------------------------------
+# Both IMUs sit on the BOTTOM side, chip X along board -Y (left), so each is rotated
+# yaw 270 relative to the board frame (-R 6). Verify on first power-up:
+#   listener sensor_accel  -> z ~ -9.8 with the board flat, top side up.
+
+board_adc start
+
+# ICM-45686 on SPI1, 32 kHz reference clock from TIM2_CH3 into CLKIN
+icm45686 -s -b 1 -R 6 -C 32000 start
+
+# BMI088 on SPI2 (different vendor, own bus)
+bmi088 -A -s -b 2 -R 6 start
+bmi088 -G -s -b 2 -R 6 start
+
+# BMP581 on internal I2C4, SDO high -> 0x47
+bmp581 -I -b 4 -a 0x47 start

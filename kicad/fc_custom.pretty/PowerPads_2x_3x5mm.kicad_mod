@@ -1,0 +1,87 @@
+(footprint "PowerPads_2x_3x5mm"
+	(version 20241229)
+	(generator "fc_gen")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Battery lead solder pads, 3x5 mm, 5 mm pitch")
+	(property "Reference" "REF**"
+		(at 0 -3.7 0)
+		(layer "F.SilkS")
+		(uuid "727a432f-b1ff-4faa-8462-62174120090c")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Value" "PowerPads_2x_3x5mm"
+		(at 0 3.7 0)
+		(layer "F.Fab")
+		(uuid "a955996e-8811-49a6-a846-d3a06e4567a9")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -4 -2.5)
+		(end 4 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "605b1b82-3e92-431a-8560-3a0f383b96f7")
+	)
+	(fp_rect
+		(start -4.3 -2.8)
+		(end 4.3 2.8)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "4af4273c-cada-4d12-941a-779aa5f27fee")
+	)
+	(pad "1" smd rect
+		(at -2.5 0)
+		(size 3 5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ea547870-912e-4aa4-8e30-ed0e34f96375")
+	)
+	(pad "2" smd rect
+		(at 2.5 0)
+		(size 3 5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "60207f6b-2096-4e7b-b48b-845872b911aa")
+	)
+	(fp_text user "+"
+		(at -2.5 -3.3 0)
+		(layer "F.SilkS")
+		(uuid "400250d3-d8ae-4dfd-b960-fd7971e4e728")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "-"
+		(at 2.5 -3.3 0)
+		(layer "F.SilkS")
+		(uuid "017a4432-a81a-43a0-9ee9-a7a687a72836")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

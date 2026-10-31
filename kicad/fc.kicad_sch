@@ -1,0 +1,352 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "c925c53e-ab81-5e2d-9266-b2e375efba22")
+	(paper "A3")
+	(title_block
+		(title "GPS-denied quadrotor flight controller: Overview")
+		(date "2026-10-31")
+		(rev "A")
+		(company "Daniel K (dvntekim)")
+		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")
+		(comment 2 "Pin map: PX4 FMUv6C (Pixhawk 6C) derivative, STM32H743VIT6 LQFP-100")
+		(comment 3 "Generated from design.py; edit the source, not this file")
+	)
+	(lib_symbols)
+	(sheet
+		(at 30 40)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "d6764ef7-999c-54da-ad6e-f1c93b23fec6")
+		(property "Sheetname" "Power"
+			(at 30 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 30 65.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "2")
+				)
+			)
+		)
+	)
+	(text "69 parts"
+		(exclude_from_sim no)
+		(at 32 45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "3c134e81-841b-52bb-ac60-d0a52d8af435")
+	)
+	(sheet
+		(at 115 40)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ffb5dc83-4834-58ff-bee0-ee55ad399d04")
+		(property "Sheetname" "MCU"
+			(at 115 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 115 65.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "3")
+				)
+			)
+		)
+	)
+	(text "30 parts"
+		(exclude_from_sim no)
+		(at 117 45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "44eb56a7-9923-56d5-9011-27e210663eb3")
+	)
+	(sheet
+		(at 200 40)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "6b15443c-36b9-5faa-884b-30ad87a54898")
+		(property "Sheetname" "Sensors"
+			(at 200 39.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sensors.kicad_sch"
+			(at 200 65.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "4")
+				)
+			)
+		)
+	)
+	(text "24 parts"
+		(exclude_from_sim no)
+		(at 202 45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "5a443438-9f4c-518d-a164-225ba741027f")
+	)
+	(sheet
+		(at 30 90)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "fa894bb8-bb79-5bdb-8e3d-9b571b845426")
+		(property "Sheetname" "Storage + USB"
+			(at 30 89.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "storage_usb.kicad_sch"
+			(at 30 115.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "5")
+				)
+			)
+		)
+	)
+	(text "16 parts"
+		(exclude_from_sim no)
+		(at 32 95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "90c1a70a-be98-5ef1-ba1b-9356717b8fa7")
+	)
+	(sheet
+		(at 115 90)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a360783a-c10d-537b-a0b7-4e12df57df36")
+		(property "Sheetname" "CAN"
+			(at 115 89.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "can.kicad_sch"
+			(at 115 115.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "6")
+				)
+			)
+		)
+	)
+	(text "18 parts"
+		(exclude_from_sim no)
+		(at 117 95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "4a0e6d04-0291-5f97-ab9e-86d9cc08858f")
+	)
+	(sheet
+		(at 200 90)
+		(size 60 25)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "7482f376-89ee-5cfa-ab76-37483aec2f30")
+		(property "Sheetname" "Connectors"
+			(at 200 89.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "connectors.kicad_sch"
+			(at 200 115.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22"
+					(page "7")
+				)
+			)
+		)
+	)
+	(text "46 parts"
+		(exclude_from_sim no)
+		(at 202 95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "6f748987-0619-5ad8-b40f-fd29d97e7697")
+	)
+	(text "GPS-denied quadrotor flight controller, rev A (DRAFT UNTIL INDEPENDENT REVIEW)\n\nMCU: STM32H743VIT6, 480 MHz Cortex-M7, PX4 (NuttX). Pin map derived from Pixhawk FMUv6C.\nIMUs: ICM-45686 (SPI1, external 32 kHz clock) + BMI088 (SPI2). Baro: BMP581 (I2C4). IMU heater.\nStorage: microSD (SDMMC2) for logs, params and the RAPTOR policy.\nBuses: 2x CAN FD (TCAN1462V), TELEM1/TELEM2 with flow control, GPS/I2C, RC (CRSF), USB-C.\nMotors: M1-M4 on TIM1 (bidirectional DShot) via 8-pin ESC harness with telemetry and current; M5-M8 on AUX.\nPower: 2S-6S in, reverse-polarity FET, TVS, 5 V 3.5 A buck, ideal-diode USB backup, 3V3 buck, low-noise sensor LDO,\ncurrent-limited peripheral and CAN power.\nBoard: 38 x 38 mm, 30.5 mm M3 mount, 6-layer JLCPCB."
+		(exclude_from_sim no)
+		(at 30 130 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left top)
+		)
+		(uuid "27a951e4-2713-50e3-a8a3-6d84c571a764")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

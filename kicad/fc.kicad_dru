@@ -1,0 +1,5 @@
+(version 1)
+# Small GND passives tie into the pour with one spoke plus a stitching via; that is enough
+# for current and keeps 0402/0603 parts from tombstoning in reflow.
+(rule "thermal spokes"
+  (constraint min_resolved_spokes (min 1)))

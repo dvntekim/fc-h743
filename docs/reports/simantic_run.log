@@ -1,0 +1,264 @@
+== Sat 31 Oct 2026 21:41:33 AEDT
+[1154/1156] Linking CXX executable dvntekim_fch743_default.elf
+/opt/homebrew/Cellar/arm-gcc-bin@13/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/bin/ld: warning: dvntekim_fch743_default.elf has a LOAD segment with RWX permissions
+Memory region         Used Size  Region Size  %age Used
+        ITCM_RAM:          0 GB        64 KB      0.00%
+           FLASH:     1792028 B      1920 KB     91.15%
+       DTCM1_RAM:          0 GB        64 KB      0.00%
+       DTCM2_RAM:          0 GB        64 KB      0.00%
+        AXI_SRAM:       69184 B       512 KB     13.20%
+           SRAM1:          0 GB       128 KB      0.00%
+           SRAM2:          0 GB       128 KB      0.00%
+           SRAM3:          0 GB        32 KB      0.00%
+           SRAM4:          0 GB        64 KB      0.00%
+          BKPRAM:          0 GB         4 KB      0.00%
+[1155/1156] Generating ../../dvntekim_fch743_default.bin
+[1156/1156] Creating ~/drone/PX4-Autopilot/build/dvntekim_fch743_default/dvntekim_fch743_default.px4
+== hw build exit 0
+[1199/1201] Linking CXX executable dvntekim_fch743sim_default.elf
+/opt/homebrew/Cellar/arm-gcc-bin@13/13.2.rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/bin/ld: warning: dvntekim_fch743sim_default.elf has a LOAD segment with RWX permissions
+Memory region         Used Size  Region Size  %age Used
+        ITCM_RAM:          0 GB        64 KB      0.00%
+           FLASH:     1791804 B      1920 KB     91.14%
+       DTCM1_RAM:          0 GB        64 KB      0.00%
+       DTCM2_RAM:          0 GB        64 KB      0.00%
+        AXI_SRAM:       69184 B       512 KB     13.20%
+           SRAM1:          0 GB       128 KB      0.00%
+           SRAM2:          0 GB       128 KB      0.00%
+           SRAM3:          0 GB        32 KB      0.00%
+           SRAM4:          0 GB        64 KB      0.00%
+          BKPRAM:          0 GB         4 KB      0.00%
+[1200/1201] Generating ../../dvntekim_fch743sim_default.bin
+[1201/1201] Creating ~/drone/PX4-Autopilot/build/dvntekim_fch743sim_default/dvntekim_fch743sim_default.px4
+== sim build exit 0
+-rwxr-xr-x@ 1 daniel  staff  45975492 31 Oct 21:43 build/dvntekim_fch743sim_default/dvntekim_fch743sim_default.elf
+all peer checks passed
+== sim exit 0
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[gyr1] gyro soft reset
+[acc1] accel soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+[gyr1] gyro soft reset
+[imu0] soft reset
+[acc1] accel soft reset
+Scenario: scenario.yaml
+  fc
+Output: console.txt
+Elapsed: 127.979s
+PASS: 5 expected, 2 absent
+== console (first 200 lines)
+[0.185326s] (usart3) reset done, 10 ms
+[0.191926s] (usart3) [boot] 
+[0.195052s] (usart3) Fault Log info File No 4 Length 3177 flags:0x01 state:1
+[0.214850s] (usart3) [boot] 
+[0.217977s] (usart3) Fault Log is Armed
+[0.678430s] (usart3) HW arch: DVNTEKIM_FCH743SIM
+[0.688503s] (usart3) PX4 git-hash: c0d2c543080517c5455b790fd42097919b914363
+[0.707954s] (usart3) PX4 version: 1.18.0 80 (17956992)
+[0.720111s] (usart3) PX4 git-branch: main
+[0.727753s] (usart3) OS: NuttX
+[0.731574s] (usart3) OS version: Release 12.12.0 (202113279)
+[0.745815s] (usart3) OS git-hash: 172b8fd7dbcfa0ea29e3be5b09fe8a392ab843a6
+[0.764919s] (usart3) Build datetime: Oct 31 2026 21:43:11
+[0.778118s] (usart3) Build uri: localhost
+[0.785760s] (usart3) Build variant: default
+[0.794096s] (usart3) Toolchain: GNU GCC, 13.2.1 20231009
+[0.806948s] (usart3) PX4GUID: 000600000000c0ffee03c0ffee02c0ffee01
+[0.823273s] (usart3) MCU: STM32H7[4|5]xxx, rev. V
+[0.833693s] (usart3) [hardfault_log] 
+[0.839946s] (usart3) Fault Log is Armed
+[0.846892s] (usart3) INFO  [param] selected parameter default file /fs/microsd/params
+[0.869818s] (usart3) INFO  [param] parameter storage empty, initializing
+[0.888227s] (usart3) INFO  [param] no backup file, using firmware defaults
+[0.907331s] (usart3) INFO  [param] parameter storage initialized
+[0.922962s] (usart3) INFO  [param] selected parameter backup file /fs/microsd/parameters_backup.bson
+[0.951097s] (usart3) Board architecture defaults: /etc/init.d/rc.board_arch_defaults
+[0.973675s] (usart3) Board defaults: /etc/init.d/rc.board_defaults
+[0.990000s] (usart3) Loading airframe: /etc/init.d/airframes/4001_quad_x
+[1.008410s] (usart3) INFO  [dataman] data manager file '/fs/microsd/dataman' size is 128528 bytes
+[1.035503s] (usart3) Board sensors: /etc/init.d/rc.board_sensors
+[1.051134s] (usart3) icm45686 #0 on SPI bus 1 rotation 6
+[1.063986s] (usart3) bmi088_accel #0 on SPI bus 2 rotation 6
+[1.078227s] (usart3) bmi088_gyro #0 on SPI bus 2 rotation 6
+[1.092121s] (usart3) bmp581 #0 on I2C bus 4 address 0x47
+[1.104973s] (usart3) nsh: icm20948_i2c_passthrough: command not found
+[1.342290s] (usart3) ekf2 [619:237]
+[1.347848s] (usart3) nsh: px4io: command not found
+[1.358616s] (usart3) INFO  [heater] Heater numbers start from 1, trying to start all Heaters
+[1.383972s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[1.405508s] (usart3) INFO  [uavcan] Node ID 1, bitrate 1000000
+[1.420444s] (usart3) ERROR [parameters] get: param 65535 invalid
+[1.436075s] (usart3) ERROR [parameters] get: param 65535 invalid
+[1.453893s] (usart6) ~.............
+[1.451705s] (usart3) ERROR [parameters] get: param 65535 invalid
+[1.454218s] (usart6) ........
+[1.467336s] (usart3) Starting DShot Driver on /dev/ttyS6
+[1.435727s] (uart8) .N....................................8....18.....C.......C.........+...................H.
+[1.480188s] (usart3) Starting Main GPS on /dev/ttyS0
+[1.451515s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[1.491651s] (usart3) Starting RC Input Driver on /dev/ttyS4
+[1.505544s] (usart3) Starting MAVLink on /dev/ttyS5
+[1.516660s] (usart3) INFO  [mavlink] mode: Normal, data rate: 2000 B/s on /dev/ttyS5 @ 57600B
+[1.542363s] (usart3) Starting UXRCE-DDS Client on /dev/ttyS3
+[1.556605s] (usart3) INFO  [uxrce_dds_client] init serial /dev/ttyS3 @ 921600 baud
+[1.578488s] (usart3) INFO  [cdcacm_autostart] Starting CDC/ACM autostart
+[1.596897s] (usart3) nsh: payload_deliverer: command not found
+[1.611833s] (usart3) INFO  [logger] logger started (mode=all)
+[1.626422s] (usart3) INFO  [logger] log root dir created: /fs/microsd/log
+[1.645179s] (usart3) 
+[1.645873s] (usart3) NuttShell (NSH) NuttX-12.12.0
+[1.656641s] (usart3) nsh> .[K
+[1.960846s] (usart3) ERROR [dshot] Error configuring port /dev/ttyS6
+[1.977866s] (usart3) ERROR [dshot] telemetry init failed
+[2.189078s] (usart3) INFO  [uavcan] advertising node_id 42 on index 0
+[2.299351s] (uart8) .......*....................!Go.g...CAL_BARO0_ID.................2...g...CAL_BARO0_PRIO...K.
+[2.893626s] (usart3) INFO  [vehicle_air_data] BARO #0 deselected, no barometer available
+[3.349610s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[3.455028s] (usart6) ~.............
+[3.443358s] (uart8) .	.................+.
+[3.455353s] (usart6) ........
+[3.947380s] (uart8) . ........*........*-G.....................d............	M.5.....e2..........*-G..z...z....G...c..........................7...............(..	.............?I!C"...........................G.....
+[4.014766s] (uart8) ......................t_
+[4.286051s] (usart3) WARN  [health_and_arming_checks] Too many arming check events (0, 15 > 14). Not reporting all
+[4.295489s] (uart8) .............O...........'7...............0...0........*........k.
+[4.319049s] (usart3) WARN  [health_and_arming_checks] Preflight Fail: No valid data from Accel 0
+[4.345795s] (usart3) WARN  [health_and_arming_checks] Preflight Fail: no valid barometer data
+[4.371499s] (usart3) WARN  [health_and_arming_checks] Preflight Fail: No valid data from Gyro 0
+[4.397897s] (usart3) WARN  [health_and_arming_checks] Preflight Fail: Power module not connected
+[5.291444s] (uart8) .......|......................4.
+[5.349738s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[5.457027s] (usart6) ~.............
+[5.435358s] (uart8) .	...................
+[5.457353s] (usart6) ........
+[5.525510s] (usart1) .b..(.............!...................!.......R,
+[6.077363s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[6.307351s] (uart8) .......*..........
+[7.349866s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[7.459027s] (usart6) ~.............
+[7.439359s] (uart8) .	...................
+[7.459353s] (usart6) ........
+[7.799380s] (uart8) . .........W9......*-G.....................................5.....e2..........*-G..z...z....G...c.....................................a....(.............H!.4..C.............................~...........X9.....F..........
+[8.309351s] (uart8) .......*..........
+[9.143390s] (uart8) .).................................................L[...........................|........................
+[9.349994s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[9.431401s] (uart8) .	.................g.
+[9.461028s] (usart6) ~.............
+[9.461353s] (usart6) ........
+[10.149337s] (usart1) .b..(.............!...................!........z
+[10.307448s] (uart8) ...........G........*........L.
+[10.701087s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[11.350163s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[11.435358s] (uart8) .	.................Fk
+[11.463028s] (usart6) ~.............
+[11.463353s] (usart6) ........
+[11.651423s] (uart8) . .. .......V......*-G..........................!........S.5.."..e2..........*-G..z...z....G...c..........................>....#.......Y6.(..$..........H!.4..C..................................%.......V................
+[12.313351s] (uart8) ....&..*........T
+[12.995462s] (uart8) ....'..|........................
+[13.350292s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[13.465028s] (usart6) ~.............
+[13.439444s] (uart8) .	..(...............3
+[13.465353s] (usart6) ........
+[14.315351s] (uart8) ....)..*.........?
+[14.775073s] (usart1) .b..(..........%..!................%..!.......p.
+[15.325167s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[15.350422s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[15.467028s] (usart6) ~.............
+[15.443358s] (uart8) .	..*...............'
+[15.467353s] (usart6) ........
+[15.503401s] (uart8) . ..+.......t......*-G.....................T....,........^.5..-..e2..........*-G..z...z....G...c.....................................f..o.(../..........H!.4..C..................................0.......t.....X.......*3.
+[16.317351s] (uart8) ....1..*.........H....2........
+[16.847390s] (uart8) .)..3...............................................]....4...................5..|.......................p
+[17.350614s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[17.435359s] (uart8) .	..6................
+[17.469028s] (usart6) ~.............
+[17.469353s] (usart6) ........
+[18.319351s] (uart8) ....7..*........)U
+[19.350742s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[19.399163s] (usart1) .b..(.............!...................!.........
+[19.355380s] (uart8) . ..8..............*-G.....................=....9..........5..:..e2..........*-G..z...z....G...c.........................m\....;......$...(..<..........H!.4..C..................................=.....s...............7.3.	..>..............W.
+[19.471027s] (usart6) ~.............
+[19.471353s] (usart6) ........
+[19.947081s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[20.321351s] (uart8) ....?..*........Ax
+[20.699483s] (uart8) ....@..|.......................E
+[21.350870s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[21.473027s] (usart6) ~.............
+[21.443448s] (uart8) .	..A..............[0....B.....`p...
+[21.473353s] (usart6) ........
+[22.323351s] (uart8) ....C..*..............D........
+[23.207535s] (uart8) . ..E..............*-G..........................F.......j..5..G..e2...............z...z....G...c.........................*.....H.....j,...(..I..........H!.4..C............................9.....J.....,.......b.......E.U
+[23.351033s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[23.435358s] (uart8) .	..K...............t
+[23.475028s] (usart6) ~.............
+[23.475353s] (usart6) ........
+[24.021080s] (usart1) .b..(.............!...................!.......4.
+[24.325385s] (uart8) ....L..*..........
+[24.551390s] (uart8) .)..M...............................................V....N.............O.....O..|......................(p
+[24.609037s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[25.351160s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[25.439358s] (uart8) .	..P................
+[25.477028s] (usart6) ~.............
+[25.477353s] (usart6) ........
+[26.327351s] (uart8) ....Q..*........6.
+[27.059402s] (uart8) . ..R......H.......*-G..........................S........&.5..T..e2...............z...z....G...c.........................'.....U......3P..(..V..........H!.4..C............................N.....W....._I..............P%.
+[27.351288s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[27.431394s] (uart8) .	..X...............O
+[27.479028s] (usart6) ~.............
+[27.479353s] (usart6) ........
+[28.329351s] (uart8) ....Y..*........^.....Z........
+[28.619571s] (uart8) ....[..|.......................=
+[28.683033s] (usart1) .b..(.............!...................!.......D.
+[29.235016s] (usart1) .b..'.......R ...R ...R ...s....s....t....t....
+[29.351422s] (usart3) ERROR [heater] heater 1: no sensor_accel instances available
+[29.435358s] (uart8) .	..\..............eg
+[29.481028s] (usart6) ~.............
+[29.481353s] (usart6) ........
+== Done. You can close this window.
