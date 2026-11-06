@@ -28,8 +28,20 @@ jobs:
           # a fresh runner has no global library tables; seed them from KiCad's templates
           mkdir -p ~/.config/kicad/9.0
           cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/
-          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/ || true
-          # KiBot and the interactive BOM run on top of KiCad's own Python (pcbnew)
+          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/
+
+      - name: Footprint libraries this board uses (instead of the whole kicad-footprints package)
+        run: |
+          sudo mkdir -p /usr/share/kicad/footprints
+          V=$(kicad-cli version | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+')
+          for L in $(grep -o '(footprint "[^:"]*:' kicad/fc.kicad_pcb | cut -d'"' -f2 | sort -u | grep -v '^fc_custom$'); do
+            curl -fsSL "https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/$V/kicad-footprints-$V.tar.gz?path=$L.pretty" \
+              | sudo tar xz -C /usr/share/kicad/footprints --strip-components=1
+            echo "$L: $(ls /usr/share/kicad/footprints/$L.pretty | wc -l) footprints"
+          done
+
+      - name: KiBot and the interactive BOM (run on KiCad's own Python)
+        run: |
           sudo python3 -m pip install --break-system-packages --no-compile kibot InteractiveHtmlBom
           printf '#!/usr/bin/env python3\nimport runpy, sys\nsys.argv[0] = "generate_interactive_bom"\nrunpy.run_module("InteractiveHtmlBom.generate_interactive_bom", run_name="__main__")\n' \
             | sudo tee /usr/local/bin/generate_interactive_bom.py >/dev/null
