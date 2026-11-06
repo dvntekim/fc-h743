@@ -28,17 +28,19 @@ jobs:
           # a fresh runner has no global library tables; seed them from KiCad's templates
           mkdir -p ~/.config/kicad/9.0
           cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/
-          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/
 
       - name: Footprint libraries this board uses (instead of the whole kicad-footprints package)
         run: |
           sudo mkdir -p /usr/share/kicad/footprints
           V=$(kicad-cli version | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+')
+          echo '(fp_lib_table (version 7)' > ~/.config/kicad/9.0/fp-lib-table
           for L in $(grep -o '(footprint "[^:"]*:' kicad/fc.kicad_pcb | cut -d'"' -f2 | sort -u | grep -v '^fc_custom$'); do
             curl -fsSL "https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/$V/kicad-footprints-$V.tar.gz?path=$L.pretty" \
               | sudo tar xz -C /usr/share/kicad/footprints --strip-components=1
             echo "$L: $(ls /usr/share/kicad/footprints/$L.pretty | wc -l) footprints"
+            echo "  (lib (name \"$L\")(type \"KiCad\")(uri \"/usr/share/kicad/footprints/$L.pretty\")(options \"\")(descr \"\"))" >> ~/.config/kicad/9.0/fp-lib-table
           done
+          echo ')' >> ~/.config/kicad/9.0/fp-lib-table
 
       - name: KiBot and the interactive BOM (run on KiCad's own Python)
         run: |
