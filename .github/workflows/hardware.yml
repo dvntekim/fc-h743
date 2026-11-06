@@ -1,0 +1,147 @@
+name: hardware
+
+# ERC/DRC gate, fab package and docs on every push and pull request.
+# A tag named rev-* also publishes a GitHub release (pre-release while the design is a draft).
+on:
+  push:
+    branches: [main]
+    tags: ['rev-*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  kicad:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install KiCad 9 (official PPA) and KiBot
+        run: |
+          sudo add-apt-repository -y ppa:kicad/kicad-9.0-releases
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends kicad xvfb python3-pip
+          kicad-cli version
+          # KiBot and the interactive BOM run on top of KiCad's own Python (pcbnew)
+          sudo python3 -m pip install --break-system-packages --no-compile kibot InteractiveHtmlBom
+          printf '#!/usr/bin/env python3\nimport runpy, sys\nsys.argv[0] = "generate_interactive_bom"\nrunpy.run_module("InteractiveHtmlBom.generate_interactive_bom", run_name="__main__")\n' \
+            | sudo tee /usr/local/bin/generate_interactive_bom.py >/dev/null
+          sudo chmod +x /usr/local/bin/generate_interactive_bom.py
+
+      - name: ERC (must be 0 errors, 0 warnings)
+        run: |
+          kicad-cli sch erc --severity-all --exit-code-violations --format report -o erc.rpt kicad/fc.kicad_sch || { cat erc.rpt; exit 1; }
+          grep "ERC messages" erc.rpt
+
+      - name: DRC with schematic parity (must be 0 errors, 0 unconnected)
+        run: |
+          kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --format report -o drc.rpt kicad/fc.kicad_pcb || { cat drc.rpt; exit 1; }
+          grep -E "Found [0-9]+ (DRC violations|unconnected|schematic parity)" drc.rpt
+
+      - name: Pin map check against ST's pin data
+        run: |
+          cd scripts && python3 pinmap_check.py && cd .. && tail -3 scripts/pinmap.md
+
+      - name: Fab package, schematic PDF, iBOM, STEP (KiBot)
+        run: |
+          xvfb-run -a kibot -c .kibot/fc-h743.kibot.yaml -e kicad/fc.kicad_sch -b kicad/fc.kicad_pcb -d build
+          cp erc.rpt drc.rpt build/
+          ls -R build | head -50
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: fc-h743-build
+          path: build
+
+      - name: Release (tags only)
+        if: startsWith(github.ref, 'refs/tags/rev-')
+        uses: softprops/action-gh-release@v2
+        with:
+          prerelease: true
+          name: ${{ github.ref_name }} (DRAFT until independent review, do not order)
+          body_path: CHANGELOG.md
+          files: |
+            build/JLCPCB/*.zip
+            build/fab/jlcpcb/*.csv
+            build/fab/*.step
+            build/docs/*.pdf
+            build/docs/*.html
+            build/*.rpt
+
+  firmware:
+    runs-on: ubuntu-24.04
+    env:
+      # the PX4 commit the board port was built and simulated against
+      PX4_COMMIT: c0d2c543080517c5455b790fd42097919b914363
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: fc-h743
+      - name: Toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi ninja-build cmake
+      - name: PX4 at the pinned commit
+        run: |
+          git clone --filter=blob:none https://github.com/PX4/PX4-Autopilot.git px4
+          cd px4 && git checkout -q "$PX4_COMMIT"
+          git config -f .gitmodules --get-regexp '\.path$' | awk '{print $2}' | grep -v modalai \
+            | xargs git submodule update --init --recursive --jobs 8
+          python3 -m pip install --break-system-packages -r Tools/setup/requirements.txt
+      - name: Build dvntekim_fch743
+        run: |
+          cp -r fc-h743/firmware/boards/dvntekim px4/boards/
+          cd px4 && GIT_SUBMODULES_ARE_EVIL=1 make dvntekim_fch743_default
+      - name: Build the simulator variant (SDMMC write-complete wait off; see sim/simantic/run_simantic.command)
+        run: |
+          cd px4
+          cp -r boards/dvntekim/fch743 boards/dvntekim/fch743sim
+          sed -i -e 's|boards/dvntekim/fch743/nuttx-config|boards/dvntekim/fch743sim/nuttx-config|' \
+                 -e 's|^CONFIG_MMCSD_SDIOWAIT_WRCOMPLETE=y|# CONFIG_MMCSD_SDIOWAIT_WRCOMPLETE is not set|' \
+                 boards/dvntekim/fch743sim/nuttx-config/nsh/defconfig
+          sed -i -e 's|boards/dvntekim/fch743/nuttx-config|boards/dvntekim/fch743sim/nuttx-config|' \
+                 boards/dvntekim/fch743sim/nuttx-config/bootloader/defconfig
+          GIT_SUBMODULES_ARE_EVIL=1 make dvntekim_fch743sim_default
+      - uses: actions/upload-artifact@v4
+        with:
+          name: px4-fch743
+          path: |
+            px4/build/dvntekim_fch743_default/*.px4
+            px4/build/dvntekim_fch743_default/*.elf
+            px4/build/dvntekim_fch743sim_default/*.elf
+
+  simantic:
+    # Boots the PX4 build on Simantic's STM32H743 model with the netlist-generated scenario.
+    # Runs only when the repo owner has added a SIMANTIC_TOKEN secret (from `simantic auth`).
+    # Simantic is alpha software, so this job reports but does not block.
+    needs: firmware
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    env:
+      SIMANTIC_TOKEN: ${{ secrets.SIMANTIC_TOKEN }}
+    steps:
+      - name: Skip without a token
+        if: ${{ env.SIMANTIC_TOKEN == '' }}
+        run: echo "No SIMANTIC_TOKEN secret; skipping the simulator boot test."
+      - uses: actions/checkout@v4
+        if: ${{ env.SIMANTIC_TOKEN != '' }}
+      - uses: actions/download-artifact@v4
+        if: ${{ env.SIMANTIC_TOKEN != '' }}
+        with:
+          name: px4-fch743
+          path: elf
+      - name: Run the boot scenario
+        if: ${{ env.SIMANTIC_TOKEN != '' }}
+        run: |
+          python3 -m pip install --break-system-packages simantic==0.4.2
+          echo "$SIMANTIC_TOKEN" | simantic auth
+          cd sim/simantic
+          gunzip -kf card.img.gz
+          ELF=$(find "$GITHUB_WORKSPACE/elf" -name dvntekim_fch743sim_default.elf | head -1)
+          sed -i "s|^    elf: .*|    elf: $ELF|" scenario.yaml
+          python3 tests/check_peers_offline.py
+          sim run --scenario scenario.yaml --ascii --output console.txt
+          head -200 console.txt

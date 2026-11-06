@@ -3,6 +3,9 @@
 > **DRAFT UNTIL INDEPENDENT REVIEW.** Not yet reviewed by a second engineer and not ordered.
 > Work through [REVIEW.md](REVIEW.md) before anyone pays for boards.
 
+[![hardware](https://github.com/dvntekim/fc-h743/actions/workflows/hardware.yml/badge.svg)](https://github.com/dvntekim/fc-h743/actions/workflows/hardware.yml)
+· [Changelog](CHANGELOG.md) · [Build log](docs/BUILD_LOG.md) · [Design review](docs/design_review.md) · [Contributing](CONTRIBUTING.md)
+
 **View it in the browser (no install):**
 - Whole project (board + all 7 schematic sheets): <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/tree/main/kicad>
 - PCB only: <https://kicanvas.org/?github=https://github.com/dvntekim/fc-h743/blob/main/kicad/fc.kicad_pcb>
@@ -28,7 +31,7 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 | CAN | 2 × TI TCAN1462V, CAN FD with signal improvement (8 Mbit/s) | DroneCAN/Cyphal sensors (flow, range) at FD rates |
 | Motor outputs | 4 × bidirectional DShot on TIM1 + ESC serial telemetry (UART8) | RPM feedback for motor-aware learned control |
 | Camera trigger | M7/M8 on TIM5 (capture/trigger) | Hardware timestamps for visual odometry |
-| Power | TPS54360B 5 V buck (60 V in, switch node as a 26 mm² pour, boot loop 2.3 mm), ideal-diode OR with USB (2 × LM66100), TLV62569 3V3, LP5907 sensor LDO, 2 × TPS2553 current-limited switches | Sensor rail can be power-cycled from firmware (PB2) to recover a hung sensor |
+| Power | TPS54360B 5.09 V buck (60 V in, switch node as a 26 mm² pour, boot loop 2.3 mm), ideal-diode OR with USB (2 × LM66100), TLV62569 3V3, LP5907 sensor LDO, 2 × TPS2553 current-limited switches | Sensor rail can be power-cycled from firmware (PB2) to recover a hung sensor |
 | Storage / USB | microSD on SDMMC2 (4-bit), USB-C (FS) | Logs and parameters; PX4 console |
 
 ## Verification status
@@ -38,11 +41,16 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 | Electrical rules | KiCad 9 ERC | **0 errors, 0 warnings** |
 | Design rules | KiCad 9 DRC (JLCPCB 6-layer limits, `kicad/fc.kicad_dru`) | **0 errors, 0 unconnected** (61 silkscreen-cosmetic warnings) |
 | Schematic ↔ PCB parity | KiCad 9 DRC `--schematic-parity` | 0 issues |
+| Vendor guides | every IC against its datasheet / layout guide | [docs/design_review.md](docs/design_review.md): 4 fixes made, 4 items open |
 | Pin map | `scripts/pinmap_check.py` against ST's pin data (KiCad STM32H743VITx symbol) | **PASS**, 74 pins — [docs/pinmap.md](docs/pinmap.md) |
-| BOM availability | JLCPCB parts API | 69/69 parts in stock on 2026-10-31 — [docs/bom_check.md](docs/bom_check.md) |
-| 5 V buck loop | ngspice averaged current-mode model | crossover 19–36 kHz, phase margin ≥ 66°, gain margin ≥ 12.9 dB over load/C/Q corners; 0.25→2.45 A step ±6 % — [docs/power_sim.md](docs/power_sim.md) |
+| BOM availability | JLCPCB parts API | 69/69 parts in stock on 2026-11-06 — [docs/bom_check.md](docs/bom_check.md) |
+| 5 V buck loop | ngspice averaged current-mode model | crossover 19–35 kHz, phase margin ≥ 66.6°, gain margin ≥ 13.1 dB over 27 corners; load step 4.78–5.39 V — [docs/power_sim.md](docs/power_sim.md) |
+| Impedance and crosstalk | atlc 2D field solver + scan of the routed board | USB 84.7 Ω diff; worst crosstalk 1.1 % — `sim/si` |
+| DC voltage drop | resistive-mesh solver on the routed copper | VBAT ≤ 56 mV at 3 A, +3V3 ≤ 46 mV; +5V to the 5 V switches 235 mV at their limits (open) — `sim/pi` |
+| Thermal | board conduction/convection model | 37–86 °C board; IMU heater cannot regulate (open) — `sim/thermal` |
 | Firmware on the netlist | PX4 board port + Simantic STM32H743 simulator, scenario generated from the netlist | **PASS**: ICM-45686 on SPI1, BMI088 on SPI2, BMP581 on I2C4 @0x47, CAN1 RX, SD logger, NSH — [docs/verification.md](docs/verification.md) |
-| Manufacturability | JLCPCB online DFM on the Gerber zip | pending (needs the owner's JLCPCB login) |
+| Firmware build | PX4 at c0d2c54, GCC 13.2, Linux CI + macOS | builds, flash 91 % |
+| Manufacturability | JLCPCB online DFM, second fab | pending (needs the owner's logins) |
 | Independent review | second engineer | **not done** |
 
 ## Board
@@ -73,11 +81,16 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 ```
 kicad/      KiCad 9 project (schematic, PCB, project library, DRC rules)
 fab/        Gerber + drill zip, JLCPCB BOM and CPL, STEP
-docs/       schematic PDF, renders, layer plots, pin map, critical nets, power sim, verification log, BOM check, reports/
+docs/       schematic PDF, renders, pin map, critical nets, power sim, design review, verification log,
+            build log, BOM check, reports/
 firmware/   PX4 board port: boards/dvntekim/fch743
-sim/        Simantic scenario + sensor peers (generated from the netlist); ngspice buck models
+sim/        simantic/ (PX4 boot scenario from the netlist), buck/ (ngspice), si/ (atlc field solver,
+            crosstalk scan), pi/ (IR drop), thermal/ (board temperature)
 scripts/    everything above is generated from these (design.py is the single source of truth)
+.kibot/     KiBot config used by CI for the fab package, iBOM, PDF and STEP
+.github/    CI workflow, issue and pull-request templates
 REVIEW.md   checklist for the independent reviewer and for bring-up
+CHANGELOG.md, CONTRIBUTING.md
 ```
 
 How it was made: `scripts/design.py` (parts, nets, pin map) → `gen_lib.py` → `gen_sch.py` (schematic, ERC) →
@@ -86,8 +99,13 @@ How it was made: `scripts/design.py` (parts, nets, pin map) → `gen_lib.py` →
 `vin_zone.py`) → `drc.sh` → `export.sh`. The schematic regenerates from `design.py`; after the hand-finishing,
 **`kicad/fc.kicad_pcb` is the source of truth for the layout** (re-running `gen_pcb.py` starts a new layout).
 
+## Licence
+
+No licence has been chosen yet, so all rights are reserved by default. The owner is deciding
+between CERN-OHL-S-2.0 (strongly reciprocal) and CERN-OHL-P-2.0 (permissive) for the hardware.
+
 ## Ordering
 
-Do not order until REVIEW.md is signed off. Then upload `fab/fc-h743-gerbers.zip` to JLCPCB
+Do not order until REVIEW.md is signed off and CI is green on the commit being ordered. Then upload `fab/fc-h743-gerbers.zip` to JLCPCB
 (6 layers, 1.6 mm, JLC06161H-3313D, ENIG), add assembly with `fab/bom_jlc.csv` and `fab/cpl_jlc.csv`,
 and check every rotation in the placement preview.

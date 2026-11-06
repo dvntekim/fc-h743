@@ -105,6 +105,7 @@ __EXPORT void board_peripheral_reset(int ms)
 	/* set the peripheral rails off */
 
 	VDD_5V_PERIPH_EN(false);
+	board_imu_clkin_stop();
 	board_control_spi_sensors_power(false, 0xffff);
 
 	/* wait for the peripheral rail to reach GND */
@@ -115,6 +116,7 @@ __EXPORT void board_peripheral_reset(int ms)
 
 	/* switch the peripheral rail back on */
 	board_control_spi_sensors_power(true, 0xffff);
+	board_imu_clkin_start();
 	VDD_5V_PERIPH_EN(true);
 
 }
@@ -152,6 +154,13 @@ __EXPORT void board_imu_clkin_start(void)
 	FCH_REG(0x14) = 1;                 /* EGR: UG */
 	FCH_REG(0x00) = (1u << 7) | 1u;    /* CR1: ARPE | CEN */
 	px4_arch_configgpio(GPIO_IMU_CLKIN);
+}
+
+/* Stop the IMU clock and park PB10 before +3V3_SENS is switched off. */
+__EXPORT void board_imu_clkin_stop(void)
+{
+	px4_arch_configgpio(GPIO_IMU_CLKIN_OFF);
+	FCH_REG(0x00) = 0;                 /* CR1: stop */
 }
 
 __EXPORT void board_on_reset(int status)
@@ -237,12 +246,13 @@ __EXPORT int board_app_initialize(uintptr_t arg)
 	px4_platform_init();
 
 
-	/* fch743: start the 32 kHz IMU reference clock before the IMU drivers probe */
-	board_imu_clkin_start();
-
 	stm32_spiinitialize();
 
+	/* Power-cycle the sensor rail with the IMU clock parked, then start the
+	 * 32 kHz reference once +3V3_SENS is up and before the IMU drivers probe. */
+	board_imu_clkin_stop();
 	board_spi_reset(10, 0xffff);
+	board_imu_clkin_start();
 
 	/* configure the DMA allocator */
 

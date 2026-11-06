@@ -12,7 +12,7 @@ import itertools, json, math, os, re, subprocess
 
 FSW = 597e3
 VREF, GMEA, AOL, GMPS = 0.8, 350e-6, 1e4, 12.0
-RTOP, RBOT = 52.3e3, 10e3
+RTOP, RBOT = 53.6e3, 10e3
 VOUT = VREF * (1 + RTOP / RBOT)
 CAP_NOM, CAP_DERATE = 22e-6, 0.59      # CL21A226MAQNNNE 25 V X5R 0805 at 5 V DC bias (Samsung curve ~ -40%)
 NCAP, ESR_EACH = 3, 0.005

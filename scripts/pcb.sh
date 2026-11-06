@@ -7,4 +7,6 @@ rsync -a --delete --exclude out --exclude sim --exclude '*.png' --exclude '*.ses
 cp /opt/r/tmp/fcsch/fc.net /opt/r/tmp/fcpcb/fc.net 2>/dev/null || true
 chroot /opt/r bash -c "cd /tmp/fcpcb && python3 $1" || echo "(python exit $? — pcbnew segfaults on teardown)"
 rsync -a /opt/r/tmp/fcpcb/kicad/ ./kicad/
+# pcbnew rewrites the project file on save: put the reviewed one back (net classes, rules)
+cp fc.kicad_pro.golden kicad/fc.kicad_pro; cp fc.kicad_pro.golden /opt/r/tmp/fcpcb/kicad/fc.kicad_pro
 cp /opt/r/tmp/fcpcb/*.json ./ 2>/dev/null || true

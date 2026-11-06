@@ -4,7 +4,9 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 
 ## 1. Schematic
 - [ ] Power entry: DMP4013LFGQ reverse-polarity FET + BZT52C12 gate clamp; SMBJ28A TVS is *after* the FET (protects downstream, FET sees the surge). Check the FET's Vds and SOA against the battery's worst transient.
-- [ ] TPS54360B: RT 162 kΩ → ~597 kHz; UVLO divider (453k/36k) start/stop voltages match a 2S–6S pack; comp 9.09 kΩ / 4.7 nF / 47 pF matches `docs/power_sim.md`.
+- [ ] TPS54360B: RT 162 kΩ → ~597 kHz; UVLO divider R5/R6 = 147k/36k gives start 5.9 V / stop 5.4 V typical (start 5.4–6.4 V over the EN threshold tolerance), fine for 2S–6S above ~3.2 V/cell; comp 9.09 kΩ / 4.7 nF / 47 pF matches `docs/power_sim.md`.
+- [ ] 5 V set point: R8/R9 = 53.6k/10k → 5.09 V (raised from 4.98 V in rev-A-draft2 so the LM66100 OR prefers the buck over USB and the 5 V switches keep ≥ 4.75 V at their current limits). Load release peaks at 5.39 V in simulation; every part on +5V/+5V_FMU is rated 5.5 V.
+- [ ] L1 FXL0530 saturates at 5 A, below the TPS54360B switch limit (5.5 A typ, 6.8 A max). Accept for rev A (3 A load) or pick a ≥ 7 A part.
 - [ ] B360A catch diode current and reverse-voltage rating vs 6S + transients.
 - [ ] LM66100 ideal-diode OR: USB path CE tied to +5V so the buck wins when present; no back-feed into USB.
 - [ ] TPS2553 limits: PERIPH and CAN5V ILIM resistors give the intended trip current.
@@ -14,7 +16,7 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 - [ ] BMI088: separate accel/gyro CS, PS pin strapping for SPI, SDO tri-stated correctly.
 - [ ] BMP581: SDO strap gives address 0x47; INT pulled down; CSB high for I2C.
 - [ ] TCAN1462V ×2: STB lines default to normal mode at boot? (PX4 drives low); split termination (60R+60R+4.7 nF) behind solder jumpers.
-- [ ] microSD: pull-ups on CMD/D0–D3, series R on CLK near the MCU, card-detect.
+- [ ] microSD: 47k pull-ups on CMD/D0–D3, 22 Ω series R on CLK near the MCU. No card-detect is wired (as FMUv6C); PX4 finds the card at mount.
 - [ ] USB-C: CC1/CC2 5.1 kΩ to GND, ESD array (U30), VBUS sense divider to PA9.
 - [ ] Every connector pinout matches the device it plugs into (Pixhawk standard where noted on the schematic).
 
@@ -22,7 +24,8 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 - [ ] `docs/pinmap.md`: every alternate function is valid (script PASS) — spot-check 10 pins by hand in the STM32H743 datasheet (DS12110) AF table.
 - [ ] `firmware/.../board_config.h`, `spi.cpp`, `i2c.cpp`, `timer_config.cpp` agree with the netlist (the Simantic scenario is generated from the netlist and must find every sensor).
 - [ ] IMU rotation `-R 6` correct for the bottom-side mounting (check with a tilt test on the bench).
-- [ ] 32 kHz IMU clock: measure on PB10 with a scope. **The simulator showed 16 kHz** (it may not model the ×2 APB1 timer clock); if hardware also shows 16 kHz, change ARR in `board_imu_clkin_start()`.
+- [ ] Sensor-rail power cycle (rev-A-draft2 firmware fix): with PB2 low, PB10 and every SPI1/SPI2 pin read ≤ 0.3 V (no back-powering of the sensors).
+- [ ] 32 kHz IMU clock: measure on PB10 with a scope. **The simulator showed 16 kHz** (it likely does not model the ×2 APB1 timer clock; the firmware follows RM0433). The ICM-45686 accepts 20–40 kHz only, so 16 kHz on hardware would be a failure: change ARR in `board_imu_clkin_start()`.
 - [ ] PX4 parameters live on the SD card (`/fs/microsd/params`); no FRAM on this board. Decide whether that is acceptable (an SD-less boot loses params) or move to flash-based params (see `corvon/743v2` in PX4).
 
 ## 3. Layout
@@ -41,10 +44,15 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
       Fine at 4S–6S (~1 A); widen before using 2S at full 5 V load (~2 A).
 - [ ] BUCK_COMP is routed 13 mm (U1 pin 6 to R10/C15 on the left). Low-frequency node, but keep it away from SW in review.
 - [ ] 17 via-in-pad (0.35/0.15 mm) on GND pads of IMU/VDDA/crystal caps: order epoxy-filled and capped vias.
-- [ ] C8 (second 100 nF VIN cap) was dropped: C3 sits directly under the VIN vias and does that job. Confirm.
-- [ ] IMU heater: 4 × 120 Ω 1206 from +5V (≈ 0.83 W total); check the 1206 rating and the AO3400A drive from PB9.
+- [ ] C8 (second 100 nF VIN cap) was dropped: C3 sits directly under the VIN vias and does that job, with a 1.5 mm track to U1's PowerPAD vias for its return. Confirm.
+- [ ] Buck return path (rev-A-draft2): D3 anode has two vias, C11/C12 got GND vias, buck GND pads are solid to the pour. Check against the TPS54360B layout example.
+- [ ] IMU heater: 4 × 120 Ω 1206 from +5V (≈ 0.86 W total at 5.09 V, 0.216 W per 0.25 W resistor); check the 1206 rating and the AO3400A drive from PB9.
+- [ ] **Heater cannot regulate** (`sim/thermal`, docs/design_review.md): the IMUs sit at ~53 °C on the bench with the heater off (set point 45 °C) and reach only ~40 °C in prop wash with it full on. Decide: accept for rev A and run PX4 thermal calibration, or isolate the IMU island now.
+- [ ] +5V to the TPS2553 switches runs ~60 mm around the MCU: 235 mV / 167 mV drop at their current limits (`sim/pi`). Accept for rev A or reroute as a trunk.
+- [ ] B360A reaches ~114 °C case at 6S / 2.5 A in still air (rated 150 °C). Fine in flight (~76 °C); avoid long full-load bench runs on 6S without airflow.
 
 ## 4. Manufacturing (JLCPCB)
+- [ ] CI (`.github/workflows/hardware.yml`) green on the commit being ordered: ERC, DRC + parity, pin map, KiBot fab package, PX4 build.
 - [ ] Gerber zip passes JLCPCB's online DFM (upload `fab/fc-h743-gerbers.zip`).
 - [ ] 0.35/0.15 mm vias (if any are listed in the DRC report) are inside JLC's 6-layer capability and do not add cost.
 - [ ] Every BOM line in stock on the day; extended-part fees accepted.

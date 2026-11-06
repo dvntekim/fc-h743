@@ -1,0 +1,124 @@
+[
+ {
+  "net": "VBAT_RAW",
+  "cells": 30380,
+  "barrels": 2,
+  "sinks": {
+   "Q1.5": {
+    "drop_mV": 55.73,
+    "worst_mV": 56.18
+   }
+  },
+  "copper_loss_mW": 167.2,
+  "max_current_density_A_per_mm2": {
+   "F": 463.3,
+   "In2": 1109.3
+  }
+ },
+ {
+  "net": "VBAT",
+  "cells": 26781,
+  "barrels": 6,
+  "sinks": {
+   "U1.2": {
+    "drop_mV": 19.61,
+    "worst_mV": 20.03
+   }
+  },
+  "copper_loss_mW": 58.8,
+  "max_current_density_A_per_mm2": {
+   "F": 238.3,
+   "In2": 2.5,
+   "In3": 0.0,
+   "B": 0.5
+  }
+ },
+ {
+  "net": "+5V",
+  "cells": 46440,
+  "barrels": 10,
+  "sinks": {
+   "U2.1": {
+    "drop_mV": 17.46,
+    "worst_mV": 17.55
+   },
+   "U6.1": {
+    "drop_mV": 235.11,
+    "worst_mV": 235.24
+   },
+   "U7.1": {
+    "drop_mV": 166.67,
+    "worst_mV": 166.87
+   },
+   "R44.1": {
+    "drop_mV": 118.0,
+    "worst_mV": 118.01
+   },
+   "R45.1": {
+    "drop_mV": 67.82,
+    "worst_mV": 67.83
+   },
+   "R46.1": {
+    "drop_mV": 22.77,
+    "worst_mV": 22.77
+   },
+   "R47.1": {
+    "drop_mV": 94.95,
+    "worst_mV": 96.0
+   }
+  },
+  "copper_loss_mW": 527.1,
+  "max_current_density_A_per_mm2": {
+   "F": 429.0,
+   "In2": 510.8,
+   "In3": 1033.1,
+   "B": 415.7
+  }
+ },
+ {
+  "net": "+3V3",
+  "cells": 40627,
+  "barrels": 16,
+  "sinks": {
+   "U10.11": {
+    "drop_mV": 43.96,
+    "worst_mV": 43.98
+   },
+   "U10.27": {
+    "drop_mV": 46.21,
+    "worst_mV": 46.23
+   },
+   "U10.50": {
+    "drop_mV": 4.87,
+    "worst_mV": 4.88
+   },
+   "U10.75": {
+    "drop_mV": 22.37,
+    "worst_mV": 22.37
+   },
+   "U10.100": {
+    "drop_mV": 41.28,
+    "worst_mV": 41.41
+   },
+   "J21.4": {
+    "drop_mV": 42.75,
+    "worst_mV": 42.77
+   },
+   "U40.5": {
+    "drop_mV": 40.78,
+    "worst_mV": 40.78
+   },
+   "U41.5": {
+    "drop_mV": 0.87,
+    "worst_mV": 0.87
+   }
+  },
+  "copper_loss_mW": 12.4,
+  "max_current_density_A_per_mm2": {
+   "F": 55.5,
+   "In2": 132.3,
+   "In3": 110.2,
+   "B": 48.0
+  }
+ }
+]

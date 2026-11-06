@@ -1,0 +1,60 @@
+# KiBot configuration for fc-h743 (KiCad 9). Used by CI (.github/workflows/hardware.yml) and locally:
+#   kibot -c .kibot/fc-h743.kibot.yaml -e kicad/fc.kicad_sch -b kicad/fc.kicad_pcb -d build
+kibot:
+  version: 1
+
+global:
+  # the BOM field that carries the JLCPCB part number in this project
+  field_lcsc_part: LCSC
+
+preflight:
+  # fail the run on any ERC error or warning, and on any DRC error or unconnected item
+  erc:
+    warnings_as_errors: true
+  drc:
+    schematic_parity: true
+    ignore_unconnected: false
+  update_xml: true
+  check_zone_fills: true
+
+import:
+  # KiBot's built-in JLCPCB template: Gerbers, drill, position (CPL) and BOM in JLC's formats
+  - file: JLCPCB
+    definitions:
+      _KIBOT_MANF_DIR: fab/jlcpcb
+
+outputs:
+  - name: schematic_pdf
+    comment: Schematic, all sheets
+    type: pdf_sch_print
+    dir: docs
+    options:
+      output: '%f-schematic.%x'
+
+  - name: ibom
+    comment: Interactive HTML BOM for hand assembly and bring-up
+    type: ibom
+    dir: docs
+    options:
+      output: '%f-ibom.%x'
+      dark_mode: false
+      show_fabrication: true
+      extra_fields: 'LCSC'
+
+  - name: step
+    comment: 3D model for mechanical fit
+    type: export_3d
+    dir: fab
+    options:
+      output: '%f.%x'
+      format: step
+      subst_models: true
+
+  - name: bom_csv
+    comment: Full BOM with every field
+    type: bom
+    dir: fab
+    options:
+      output: '%f-bom.%x'
+      format: CSV
+      columns: [References, Value, Footprint, LCSC, Quantity Per PCB]

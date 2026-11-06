@@ -1,0 +1,32 @@
+name: Bring-up / erratum
+description: A problem found on a built board
+labels: [bring-up]
+body:
+  - type: input
+    id: board
+    attributes:
+      label: Board revision and serial
+      placeholder: rev A, #003
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Symptom
+      description: What happened, and the steps that make it happen
+    validations:
+      required: true
+  - type: textarea
+    id: measurement
+    attributes:
+      label: Measurements
+      description: Voltages, scope captures, current draw, temperatures; name the instrument
+  - type: textarea
+    id: firmware
+    attributes:
+      label: Firmware
+      description: PX4 commit, board target, relevant `dmesg` / NSH output
+  - type: textarea
+    id: rework
+    attributes:
+      label: Rework or workaround tried
