@@ -82,7 +82,7 @@ a FRAM the board lacks, old parameter names, an SD write stall caused by the mod
 | Thermal model | 86 °C board, ~114 °C diode at 6S in still air; heater cannot regulate | REVIEW items; rev-B IMU island |
 | PX4 builds (Linux + macOS) | builds at c0d2c54, flash 91 % | CI firmware job |
 | Simantic re-run | same PASS with the patched firmware | — |
-| KiBot + GitHub Actions | — | ERC, DRC, pin map, fab package, iBOM, PDF, STEP, PX4 build on every push |
+| KiBot + GitHub Actions | first runs on a clean runner failed where the workspace passed: no KiCad symbol tables (580 ERC warnings), no ARM newlib (PX4 link), no lxml (KiBot), a 38-min PPA stall | library tables seeded, packages named explicitly, `.deb` cache + step timeout; only "stock footprint library not installed" is filtered (footprints are embedded and DRC checks parity) |
 
 ## Open before ordering
 - Owner: licence choice, JLCPCB and second-fab DFM (logins), `SIMANTIC_TOKEN` secret, an independent
