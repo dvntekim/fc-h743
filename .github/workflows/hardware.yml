@@ -32,7 +32,7 @@ jobs:
       - name: Footprint libraries this board uses (instead of the whole kicad-footprints package)
         run: |
           sudo mkdir -p /usr/share/kicad/footprints
-          V=$(kicad-cli version | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+')
+          V=9.0   # stable branch of the KiCad 9 footprint library
           echo '(fp_lib_table (version 7)' > ~/.config/kicad/9.0/fp-lib-table
           for L in $(grep -o '(footprint "[^:"]*:' kicad/fc.kicad_pcb | cut -d'"' -f2 | sort -u | grep -v '^fc_custom$'); do
             curl -fsSL "https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/$V/kicad-footprints-$V.tar.gz?path=$L.pretty" \
