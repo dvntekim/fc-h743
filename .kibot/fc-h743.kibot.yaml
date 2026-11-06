@@ -12,11 +12,11 @@ preflight:
   # One exception: CI installs KiCad without the stock footprint libraries (the footprints are
   # embedded in the board, and DRC checks schematic parity), so "footprint library not found"
   # is an environment warning there, not a design one.
-  filters:
-    - filter: 'Stock footprint libraries are not installed in CI'
-      error: 'footprint_link_issues'
   erc:
     warnings_as_errors: true
+    filters:
+      - filter: 'Stock footprint libraries are not installed in CI'
+        error: 'footprint_link_issues'
   drc:
     schematic_parity: true
     ignore_unconnected: false
