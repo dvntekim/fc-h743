@@ -84,7 +84,7 @@ jobs:
       - name: Toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi ninja-build cmake
+          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib ninja-build cmake
       - name: PX4 at the pinned commit
         run: |
           git clone --filter=blob:none https://github.com/PX4/PX4-Autopilot.git px4
