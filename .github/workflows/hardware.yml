@@ -31,7 +31,7 @@ jobs:
 
       - name: KiBot and the interactive BOM (run on KiCad's own Python)
         run: |
-          sudo python3 -m pip install --break-system-packages --no-compile kibot InteractiveHtmlBom
+          sudo python3 -m pip install --break-system-packages --no-compile kibot InteractiveHtmlBom lxml
           printf '#!/usr/bin/env python3\nimport runpy, sys\nsys.argv[0] = "generate_interactive_bom"\nrunpy.run_module("InteractiveHtmlBom.generate_interactive_bom", run_name="__main__")\n' \
             | sudo tee /usr/local/bin/generate_interactive_bom.py >/dev/null
           sudo chmod +x /usr/local/bin/generate_interactive_bom.py
