@@ -34,6 +34,18 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 | Power | TPS54360B 5.09 V buck (60 V in, switch node as a 26 mm² pour, boot loop 2.3 mm), ideal-diode OR with USB (2 × LM66100), TLV62569 3V3, LP5907 sensor LDO, 2 × TPS2553 current-limited switches | Sensor rail can be power-cycled from firmware (PB2) to recover a hung sensor |
 | Storage / USB | microSD on SDMMC2 (4-bit), USB-C (FS) | Logs and parameters; PX4 console |
 
+## What is real and what is simulated
+
+Nothing on this page has been built. The board has passed every check that can run without
+hardware: rule checks, a JLCPCB manufacturing check, field-solver, voltage-drop and thermal
+models, a power-stage simulation, and PX4 booting on a simulated STM32H743 with this board's pin
+map. Each model states its limits in its own file. The first built board must confirm the
+numbers, starting with the bench plan in [REVIEW.md](REVIEW.md).
+
+Rev B is in progress: [docs/revB_thermal.md](docs/revB_thermal.md) sets an IMU temperature
+requirement from the datasheets and shows the IMUs must move off the MCU onto an isolated island
+to meet it. The analysis is done; the layout is not.
+
 ## Verification status
 
 | Check | Tool | Result |

@@ -15,6 +15,11 @@ letters (rev A, rev B); a tag `rev-A-draftN` marks a draft of rev A that has not
 
 ### Added
 - Fab DFM results (JLCDFM) in docs/design_review.md; JLC quote settings in REVIEW.md.
+- Rev B thermal analysis (docs/revB_thermal.md, sim/thermal/revB/). Requirement from the IMU
+  datasheets: hold within ±1.5 °C. Rev A cannot (no holdable set point), nor can an island left
+  under the MCU (2.9 °C window at best). An island moved off the MCU with a 1.5 W heater gives a
+  48–60 °C window, and PX4's default heater loop holds ±0.55 °C there. The one modelled failure
+  is island isolation half as good as predicted. Layout not started.
 
 ## [rev-A-draft2] - 2026-11-06
 

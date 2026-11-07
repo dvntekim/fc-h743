@@ -47,7 +47,7 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 - [ ] C8 (second 100 nF VIN cap) was dropped: C3 sits directly under the VIN vias and does that job, with a 1.5 mm track to U1's PowerPAD vias for its return. Confirm.
 - [ ] Buck return path (rev-A-draft2): D3 anode has two vias, C11/C12 got GND vias, buck GND pads are solid to the pour. Check against the TPS54360B layout example.
 - [ ] IMU heater: 4 × 120 Ω 1206 from +5V (≈ 0.86 W total at 5.09 V, 0.216 W per 0.25 W resistor); check the 1206 rating and the AO3400A drive from PB9.
-- [ ] **Heater cannot regulate** (`sim/thermal`, docs/design_review.md): the IMUs sit at ~53 °C on the bench with the heater off (set point 45 °C) and reach only ~40 °C in prop wash with it full on. Decide: accept for rev A and run PX4 thermal calibration, or isolate the IMU island now.
+- [ ] **Heater cannot regulate** (rev B design in docs/revB_thermal.md: IMUs off the MCU on a slotted island, 1.5 W heater, 55 °C). (`sim/thermal`, docs/design_review.md): the IMUs sit at ~53 °C on the bench with the heater off (set point 45 °C) and reach only ~40 °C in prop wash with it full on. Decide: accept for rev A and run PX4 thermal calibration, or isolate the IMU island now.
 - [ ] +5V to the TPS2553 switches runs ~60 mm around the MCU: 235 mV / 167 mV drop at their current limits (`sim/pi`). Accept for rev A or reroute as a trunk.
 - [ ] B360A reaches ~114 °C case at 6S / 2.5 A in still air (rated 150 °C). Fine in flight (~76 °C); avoid long full-load bench runs on 6S without airflow.
 
