@@ -21,7 +21,7 @@ another outline or a pad; the fab clips silk off pads). Rules in force:
 
 Board: 50 × 50 mm, 6 layers, 1.6 mm, JLC06161H-3313D (stackup in the board file, cross-checked against
 jlcpcb.com/impedance on 2026-10-31: 3313+1080 / 0.25 core / 7628+2116+7628 / 0.25 core / 1080+3313), ENIG.
-554 vias, ~3 500 track segments, GND pours on all signal layers stitched to the In1/In4 planes.
+533 vias, ~3 500 track segments, GND pours on all signal layers stitched to the In1/In4 planes.
 
 An extra connectivity pass (`scripts/gnd_graph.py`, union-find over pours, tracks, vias and pads) finds
 no isolated GND copper that carries a pad.
@@ -118,6 +118,6 @@ package, schematic PDF, iBOM, STEP) and the PX4 build on every push; Simantic ru
 `SIMANTIC_TOKEN` secret exists.
 
 ## 13. Not yet done
-- Fab DFM: JLCPCB online DFM and a second fab's check on `fab/fc-h743-gerbers.zip` (need the owner's logins).
+- Fab DFM: JLCDFM run on 2026-11-07 (one fix, the rest explained in design_review.md); PCBWay's check pending.
 - Independent review (REVIEW.md).
 - TI's own TPS54360B transient model (download needs the owner's OK) and a bench load step.

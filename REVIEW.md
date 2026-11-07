@@ -37,7 +37,7 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 - [ ] No copper or vias under the BMP581 vent; foam cover clearance.
 - [ ] Thermal vias under TPS54360B PowerPAD into the GND planes.
 - [ ] GND stitching: every isolated pour island has a via (DRC 0 unconnected).
-- [ ] Mounting-hole keepouts respected (M3 + nylon hardware, 3 mm keepout).
+- [ ] Mounting holes: no tracks within 1 mm of the 4 mm hole edge and no via closer than 1 mm (rev-A-draft3 removed 21 GND stitching vias that sat 0.37–0.92 mm away). Only GND copper sits inside 1.5 mm. Confirm against the frame's standoffs / grommets.
 - [ ] Silkscreen: polarity and pin-1 marks visible after assembly (silk warnings in DRC are cosmetic overlaps; review the render).
 - [ ] DRC report `docs/reports/drc.rpt`: 0 errors, 0 unconnected (61 silk warnings are cosmetic — check the render).
 - [ ] VIN path: U1 pin 2 is fed by an F.Cu pour from three VBAT vias; part of VBAT runs at 0.4 mm on In2 (0.5 oz).
@@ -53,7 +53,9 @@ Status: **DRAFT UNTIL INDEPENDENT REVIEW.** Tick each line with initials and dat
 
 ## 4. Manufacturing (JLCPCB)
 - [ ] CI (`.github/workflows/hardware.yml`) green on the commit being ordered: ERC, DRC + parity, pin map, KiBot fab package, PX4 build.
-- [ ] Gerber zip passes JLCPCB's online DFM (upload `fab/fc-h743-gerbers.zip`).
+- [ ] Gerber zip passes JLCPCB's online DFM. JLCDFM run 2026-11-07 on rev-A-draft2: one real finding (vias near mounting holes) fixed in draft3; every other flag explained in docs/design_review.md. Re-run on the commit being ordered.
+- [ ] Second fab's DFM (PCBWay) on the same zip.
+- [ ] JLC quote settings: 6 layers, 1.6 mm, JLC06161H-3313D (Specify Stackup: Yes), ENIG, via covering epoxy-filled & capped, min via hole 0.15 mm; NPTH holes (4 × 4.0 mm, 2 × 0.65 mm) shown as non-plated in the order preview.
 - [ ] 0.35/0.15 mm vias (if any are listed in the DRC report) are inside JLC's 6-layer capability and do not add cost.
 - [ ] Every BOM line in stock on the day; extended-part fees accepted.
 - [ ] CPL rotations checked part by part in JLC's placement preview (KiCad and JLC disagree on several packages: SOT-23-6, VSON, LGA, USB-C).

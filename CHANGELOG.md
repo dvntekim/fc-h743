@@ -8,6 +8,14 @@ letters (rev A, rev B); a tag `rev-A-draftN` marks a draft of rev A that has not
 
 ## [Unreleased]
 
+### Fixed
+- JLCDFM (2026-11-07) flagged GND stitching vias 0.37 mm from the 4 mm mounting holes. 21 stitching
+  vias within 1 mm of a mounting-hole edge removed; DRC 0 errors, 0 unconnected, parity 0; no GND
+  pour islands.
+
+### Added
+- Fab DFM results (JLCDFM) in docs/design_review.md; JLC quote settings in REVIEW.md.
+
 ## [rev-A-draft2] - 2026-11-06
 
 Refinement round: vendor-guide review, field solvers, power-integrity and thermal checks, CI.
