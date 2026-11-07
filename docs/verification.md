@@ -21,7 +21,7 @@ another outline or a pad; the fab clips silk off pads). Rules in force:
 
 Board: 50 × 50 mm, 6 layers, 1.6 mm, JLC06161H-3313D (stackup in the board file, cross-checked against
 jlcpcb.com/impedance on 2026-10-31: 3313+1080 / 0.25 core / 7628+2116+7628 / 0.25 core / 1080+3313), ENIG.
-562 vias, ~3 000 track segments, GND pours on all signal layers stitched to the In1/In4 planes.
+554 vias, ~3 500 track segments, GND pours on all signal layers stitched to the In1/In4 planes.
 
 An extra connectivity pass (`scripts/gnd_graph.py`, union-find over pours, tracks, vias and pads) finds
 no isolated GND copper that carries a pad.
@@ -43,16 +43,17 @@ See `docs/critical_nets.md` (generated from the routed board). Highlights:
 Every LCSC part in stock at JLCPCB on 2026-10-31 (`docs/bom_check.md`).
 
 ## 6. 5 V buck (ngspice 45.2)
-Averaged current-mode model of the TPS54360B with the chosen compensation (9.09 kΩ / 4.7 nF / 47 pF),
-27 corners (load 0.3–3.5 A, effective Cout 27–51 µF, sampling-pole Q 0.5–2): crossover 19–36 kHz, phase margin ≥ 66.4°,
-gain margin ≥ 12.9 dB. 0.3 → 2.5 A step at 1 A/µs: ±6 % (`docs/power_sim.md`, `sim/buck/`).
+Averaged current-mode model of the TPS54360B with the chosen compensation (9.09 kΩ / 4.7 nF / 47 pF) at
+the 5.09 V set point, 27 corners (load 0.3–3.5 A, effective Cout 27–51 µF, sampling-pole Q 0.5–2):
+crossover 19–35 kHz, phase margin ≥ 66.6°, gain margin ≥ 13.1 dB. 0.25 → 2.45 A step at 1 A/µs:
+4.78–5.39 V (`docs/power_sim.md`, `sim/buck/`).
 
 ## 7. PX4 on the netlist (Simantic 0.8.7, STM32H743VI model)
 `sim/simantic/scenario.yaml` is generated from the netlist (`scripts/gen_scenario.py`): bus, chip select
 and address of every sensor come from `design.py`, so a wiring or pin-map mistake makes the firmware miss
 its sensor. Firmware: PX4 main (1.18.0-80) with the `dvntekim_fch743` board port in `firmware/`.
 
-Result: **PASS, 5 expected strings present, 2 forbidden absent** (`docs/reports/simantic_console.txt`):
+Result: **PASS, 5 expected strings present, 2 forbidden absent** (re-run 2026-11-06 on the rev-A-draft2 firmware with the sensor-rail fixes: same result) (`docs/reports/simantic_console.txt`):
 ```
 icm45686 #0 on SPI bus 1 rotation 6        <- SPI1, CS PC13 (WHO_AM_I 0xE9 read back)
 bmi088_accel #0 on SPI bus 2 rotation 6    <- SPI2, CS PC15
@@ -77,6 +78,46 @@ Open items the simulator raised (see REVIEW.md):
 - The simulator build disables `CONFIG_MMCSD_SDIOWAIT_WRCOMPLETE` (its SDMMC model never raises the
   D0-busy-end interrupt); the hardware build keeps it. Both builds compile.
 
-## 8. Not yet done
-- JLCPCB online DFM on `fab/fc-h743-gerbers.zip` (needs the owner's JLCPCB login).
+## 8. Vendor guides (rev-A-draft2)
+Every IC checked against its datasheet / layout guide / app note: `docs/design_review.md`.
+Fixed: 5 V set point (LM66100 OR margin and copper drop), buck return-path vias, two firmware
+back-powering faults on the sensor rail. Open items carried to REVIEW.md.
+
+## 9. Stackup and signal integrity (atlc 4.6.1, 2D finite-difference field solver)
+`sim/si/xsec.py` draws each cross-section from the stackup in the board file (5 µm per pixel,
+grounded enclosure) and solves it.
+
+| Structure | Result |
+|---|---|
+| USB D+/D− 0.25 / 0.15 mm on F.Cu over In1 | Zdiff 84.7 Ω with the GND pour, 86.8 Ω without (USB: 90 Ω ±15 %) |
+| 0.127 mm signal, F.Cu | 67–73 Ω |
+| 0.127 mm signal, In2 | 64–71 Ω |
+| Coupling, 0.127 mm tracks, F.Cu | K = 0.33 / 0.19 / 0.11 / 0.05 at 0.10 / 0.20 / 0.30 / 0.50 mm gap |
+| In2 over In3 broadside | K = 0.12 |
+
+`sim/si/xtalk_scan.py` then walks every clock and fast-edge net on the routed board, sums parallel
+coupled length to each neighbour and estimates near-end crosstalk with the saturating model:
+worst case SD_CLK → CAN1_H, 15 mm at 0.14 mm gap, **1.1 % of swing**; every other pair < 1 %.
+
+## 10. Power integrity (`sim/pi/ir_drop.py`, resistive mesh on the routed copper)
+| Net | Load | Drop |
+|---|---|---|
+| VBAT_RAW (pads → FET) | 3 A | 56 mV |
+| VBAT (FET → buck VIN) | 3 A | 20 mV |
+| +5V (inductor → TPS2553s) | 1.3 A + 1.2 A | 235 / 167 mV (open item; covered by the 5.09 V set point) |
+| +3V3 (inductor → MCU, SD) | 0.35 A | ≤ 46 mV |
+
+## 11. Thermal (`sim/thermal/thermal.py`, board-level conduction + convection)
+Still air (h = 12 W/m²K per face) and prop wash (50 W/m²K): board 37–86 °C, B360A case up to ~114 °C
+at 6S / 2.5 A in still air. The IMU heater cannot hold a set point (see design_review.md).
+
+## 12. Firmware build and CI
+The board port builds at PX4 commit c0d2c54 on Linux (GCC 13.2, this repo's CI recipe) and macOS.
+`.github/workflows/hardware.yml` runs ERC, DRC with parity, the pin-map check, KiBot (JLCPCB fab
+package, schematic PDF, iBOM, STEP) and the PX4 build on every push; Simantic runs when a
+`SIMANTIC_TOKEN` secret exists.
+
+## 13. Not yet done
+- Fab DFM: JLCPCB online DFM and a second fab's check on `fab/fc-h743-gerbers.zip` (need the owner's logins).
 - Independent review (REVIEW.md).
+- TI's own TPS54360B transient model (download needs the owner's OK) and a bench load step.

@@ -3,3 +3,5 @@
 fp-info-cache
 __pycache__/
 *.lck
+scripts/pinmap.md
+build/

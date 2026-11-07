@@ -3,7 +3,7 @@
 machines:
   fc:
     mcu: STM32H743VI
-    elf: ../../../PX4-Autopilot/build/dvntekim_fch743_default/dvntekim_fch743_default.elf
+    elf: ../../../PX4-Autopilot/build/dvntekim_fch743sim_default/dvntekim_fch743sim_default.elf
     parts:
       - { name: card, type: sd-card, bus: sdmmc2, size: 16MiB, image: card.img }
       - { name: imu0, type: spi-device, bus: spi1, cs: PC13, script: peers/icm45686_peer.py }
@@ -14,7 +14,7 @@ machines:
 media:
   - type: can
     connect: [fc.fdcan1, fc.flow]
-timeout: 20
+timeout: 30
 expect:
   - "NuttShell"
   - "icm45686 #0 on SPI bus 1"

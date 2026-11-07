@@ -122,6 +122,8 @@
 /* fch743: 32 kHz IMU clock to ICM-45686 CLKIN, TIM2_CH3 on PB10 (AF1) */
 #define GPIO_IMU_CLKIN            /* PB10 */ (GPIO_ALT|GPIO_AF1|GPIO_SPEED_50MHz|GPIO_PUSHPULL|GPIO_PORTB|GPIO_PIN10)
 #define BOARD_IMU_CLKIN_HZ        32000
+/* PB10 parked (input, pull-down) while +3V3_SENS is off, so the clock cannot back-power the ICM-45686 */
+#define GPIO_IMU_CLKIN_OFF        /* PB10 */ (GPIO_INPUT|GPIO_PULLDOWN|GPIO_SPEED_2MHz|GPIO_PORTB|GPIO_PIN10)
 
 /* Tone alarm output (buzzer pads) */
 #define TONE_ALARM_TIMER        3  /* Timer 3 */
@@ -186,6 +188,7 @@ extern void stm32_spiinitialize(void);
 extern void stm32_usbinitialize(void);
 extern void board_peripheral_reset(int ms);
 extern void board_imu_clkin_start(void);
+extern void board_imu_clkin_stop(void);
 
 #include <px4_platform_common/board_common.h>
 

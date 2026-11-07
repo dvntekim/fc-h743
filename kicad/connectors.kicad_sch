@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "GPS-denied quadrotor flight controller: Connectors")
-		(date "2026-10-31")
+		(date "2026-11-06")
 		(rev "A")
 		(company "Daniel K (dvntekim)")
 		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")

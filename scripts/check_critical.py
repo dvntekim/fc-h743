@@ -73,9 +73,16 @@ bad = sorted({t.GetNetname() for t in b.GetTracks() if sw.Intersects(t.GetBoundi
 out.append(f"- Sensor/clock nets crossing the inductor L1 outline on any layer: {', '.join(bad) if bad else 'none'}")
 # hot loop: input caps, IC, diode positions
 try:
-    pts = {r: pos(r) for r in ("U1", "D3", "C6", "C7", "C8")}
-    span = max(math.dist(pts[a], pts[c]) for a in pts for c in pts)
-    out.append(f"- Buck hot-loop parts (C6/C7/C8, U1, D3) span: {span:.1f} mm")
+    # HF input cap C3 (under the VIN vias) and the catch-diode anode close the high di/dt loop
+    def padpos(ref, num):
+        p = next(q for q in b.FindFootprintByReference(ref).Pads() if q.GetNumber() == num)
+        return (tomm(p.GetPosition().x), tomm(p.GetPosition().y))
+    d = math.dist(padpos("C3", "2"), padpos("D3", "2"))
+    nv = sum(1 for t in b.GetTracks() if t.GetClass() == "PCB_VIA" and t.GetNetname() == "GND"
+             and math.dist((tomm(t.GetPosition().x), tomm(t.GetPosition().y)), padpos("D3", "2")) < 1.6)
+    sw_area = sum(z.GetFilledArea() for z in b.Zones() if z.GetNetname() == "BUCK_SW") / 1e12
+    out.append(f"- Buck hot loop: C3 GND pad to D3 anode {d:.1f} mm, closed on In1 0.18 mm below F.Cu; {nv} GND vias at the D3 anode")
+    out.append(f"- Buck switch node: F.Cu pour, {sw_area:.0f} mm2 (BUCK_SW has no tracks)")
 except Exception as e:
     out.append(f"- Buck hot-loop check skipped: {e}")
 vsmall = sum(1 for t in b.GetTracks() if t.GetClass() == "PCB_VIA" and tomm(t.GetDrill()) < 0.2)

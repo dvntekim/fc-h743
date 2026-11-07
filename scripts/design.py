@@ -51,7 +51,7 @@ RES_LCSC = {  # 0402 1% thick film
     "22": "C25092", "33": "C25105", "47": "C25118", "60.4": "C60310", "100": "C25076",
     "1k": "C11702", "470": "C25117", "2k": "C4109", "2.2k": "C25879", "5.1k": "C25905",
     "10k": "C25744", "20k": "C25765", "22k": "C25768", "33k": "C25779",
-    "36k": "C43676", "47k": "C25792", "52.3k": "C26982", "100k": "C25741",
+    "36k": "C43676", "47k": "C25792", "52.3k": "C26982", "53.6k": "C53398", "100k": "C25741",
     "147k": "C64171", "162k": "C54068", "453k": "C27009", "1M": "C26083", "9.09k": "C11549",
     "6.04k": "C25981",
 }
@@ -124,7 +124,7 @@ C("22uF", "+5V", "GND", S)
 C("22uF", "+5V", "GND", S)
 C("22uF", "+5V", "GND", S)
 C("100nF", "+5V", "GND", S)
-R("52.3k", "+5V", "BUCK_FB", S, note="Vout = 0.8 V x (1 + 52.3k/10k) = 4.98 V")
+R("53.6k", "+5V", "BUCK_FB", S, note="Vout = 0.8 V x (1 + 53.6k/10k) = 5.09 V: above typical USB VBUS so the LM66100 OR prefers the buck, headroom for copper drop to the 5 V switches, load-release peak < 5.5 V")
 R("10k", "BUCK_FB", "GND", S)
 R("9.09k", "BUCK_COMP", "BUCK_CZ", S, note="Type II comp, fc ~ 40 kHz (see sim/buck)")
 C("4.7nF", "BUCK_CZ", "GND", S)

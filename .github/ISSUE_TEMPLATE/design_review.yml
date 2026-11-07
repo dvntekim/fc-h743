@@ -1,0 +1,37 @@
+name: Design review finding
+description: Something in the schematic, layout, BOM or firmware port that looks wrong
+labels: [review]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Reference designator, net, sheet, file or REVIEW.md item
+      placeholder: U1 / BUCK_COMP / REVIEW.md 3.x
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: What the design does now and what it should do
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Datasheet / app note section and page, calculation, simulation or measurement
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocks ordering (board will not work or is unsafe)
+        - Must fix in this revision
+        - Fix in next revision
+        - Note / question
+    validations:
+      required: true

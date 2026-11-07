@@ -8,217 +8,217 @@
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 0.5,
-    "fc_kHz": 49.9,
-    "pm_deg": 59.6,
-    "gm_dB": 14.7
+    "fc_kHz": 48.9,
+    "pm_deg": 60.0,
+    "gm_dB": 14.9
    },
    {
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 1.0,
-    "fc_kHz": 52.0,
-    "pm_deg": 68.2,
-    "gm_dB": 13.0
+    "fc_kHz": 50.9,
+    "pm_deg": 68.5,
+    "gm_dB": 13.2
    },
    {
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 2.0,
-    "fc_kHz": 52.6,
-    "pm_deg": 73.1,
-    "gm_dB": 10.1
+    "fc_kHz": 51.5,
+    "pm_deg": 73.3,
+    "gm_dB": 10.2
    },
    {
     "iload": 0.3,
     "cout_uF": 38.9,
     "q": 0.5,
+    "fc_kHz": 35.0,
+    "pm_deg": 66.4,
+    "gm_dB": 18.2
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 38.9,
+    "q": 1.0,
     "fc_kHz": 35.7,
-    "pm_deg": 66.1,
-    "gm_dB": 18.1
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 36.4,
-    "pm_deg": 72.7,
-    "gm_dB": 16.2
+    "pm_deg": 72.8,
+    "gm_dB": 16.4
    },
    {
     "iload": 0.3,
     "cout_uF": 38.9,
     "q": 2.0,
-    "fc_kHz": 36.6,
+    "fc_kHz": 35.9,
     "pm_deg": 76.2,
-    "gm_dB": 13.2
+    "gm_dB": 13.3
    },
    {
     "iload": 0.3,
     "cout_uF": 50.6,
     "q": 0.5,
-    "fc_kHz": 27.7,
-    "pm_deg": 69.2,
-    "gm_dB": 20.6
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 28.1,
-    "pm_deg": 74.4,
-    "gm_dB": 18.7
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 28.2,
-    "pm_deg": 77.1,
-    "gm_dB": 15.5
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 49.8,
-    "pm_deg": 61.2,
-    "gm_dB": 14.8
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 51.9,
-    "pm_deg": 69.7,
-    "gm_dB": 13.0
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 52.5,
-    "pm_deg": 74.6,
-    "gm_dB": 10.1
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 35.6,
-    "pm_deg": 67.7,
-    "gm_dB": 18.1
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 36.4,
-    "pm_deg": 74.2,
-    "gm_dB": 16.3
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 36.6,
-    "pm_deg": 77.7,
-    "gm_dB": 13.2
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 27.7,
-    "pm_deg": 70.8,
-    "gm_dB": 20.7
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 28.0,
-    "pm_deg": 76.0,
-    "gm_dB": 18.7
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 28.1,
-    "pm_deg": 78.7,
-    "gm_dB": 15.5
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 49.7,
-    "pm_deg": 64.0,
-    "gm_dB": 15.0
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 51.7,
-    "pm_deg": 72.4,
-    "gm_dB": 13.1
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 52.4,
-    "pm_deg": 77.2,
-    "gm_dB": 10.1
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 35.5,
-    "pm_deg": 70.4,
-    "gm_dB": 18.3
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 36.3,
-    "pm_deg": 76.8,
-    "gm_dB": 16.3
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 36.5,
-    "pm_deg": 80.3,
-    "gm_dB": 13.2
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 27.6,
-    "pm_deg": 73.4,
+    "fc_kHz": 27.2,
+    "pm_deg": 69.4,
     "gm_dB": 20.8
    },
    {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 27.5,
+    "pm_deg": 74.5,
+    "gm_dB": 18.9
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 27.6,
+    "pm_deg": 77.1,
+    "gm_dB": 15.6
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 48.9,
+    "pm_deg": 61.7,
+    "gm_dB": 15.0
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 50.8,
+    "pm_deg": 70.1,
+    "gm_dB": 13.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 51.4,
+    "pm_deg": 74.8,
+    "gm_dB": 10.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 34.9,
+    "pm_deg": 68.0,
+    "gm_dB": 18.3
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 35.6,
+    "pm_deg": 74.4,
+    "gm_dB": 16.5
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 35.8,
+    "pm_deg": 77.8,
+    "gm_dB": 13.4
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 27.1,
+    "pm_deg": 70.9,
+    "gm_dB": 20.8
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 27.5,
+    "pm_deg": 76.0,
+    "gm_dB": 18.9
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 27.6,
+    "pm_deg": 78.7,
+    "gm_dB": 15.6
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 48.7,
+    "pm_deg": 64.4,
+    "gm_dB": 15.1
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 50.7,
+    "pm_deg": 72.7,
+    "gm_dB": 13.3
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 51.3,
+    "pm_deg": 77.4,
+    "gm_dB": 10.3
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 34.8,
+    "pm_deg": 70.7,
+    "gm_dB": 18.4
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 35.5,
+    "pm_deg": 77.0,
+    "gm_dB": 16.5
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 35.7,
+    "pm_deg": 80.4,
+    "gm_dB": 13.4
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 27.1,
+    "pm_deg": 73.6,
+    "gm_dB": 20.9
+   },
+   {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 1.0,
-    "fc_kHz": 28.0,
-    "pm_deg": 78.5,
-    "gm_dB": 18.7
+    "fc_kHz": 27.4,
+    "pm_deg": 78.6,
+    "gm_dB": 18.9
    },
    {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 2.0,
-    "fc_kHz": 28.1,
+    "fc_kHz": 27.5,
     "pm_deg": 81.2,
-    "gm_dB": 15.5
+    "gm_dB": 15.7
    }
   ]
  },
@@ -231,217 +231,217 @@
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 0.5,
-    "fc_kHz": 49.9,
-    "pm_deg": 60.2,
-    "gm_dB": 14.7
+    "fc_kHz": 49.0,
+    "pm_deg": 60.6,
+    "gm_dB": 14.9
    },
    {
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 1.0,
-    "fc_kHz": 52.0,
-    "pm_deg": 68.7,
-    "gm_dB": 13.0
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 52.6,
-    "pm_deg": 73.6,
-    "gm_dB": 10.0
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 35.7,
-    "pm_deg": 66.9,
-    "gm_dB": 18.1
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 36.4,
-    "pm_deg": 73.5,
-    "gm_dB": 16.2
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 36.6,
-    "pm_deg": 77.0,
+    "fc_kHz": 51.0,
+    "pm_deg": 69.0,
     "gm_dB": 13.2
    },
    {
     "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 27.7,
-    "pm_deg": 70.3,
-    "gm_dB": 20.6
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 51.5,
+    "pm_deg": 73.9,
+    "gm_dB": 10.2
    },
    {
     "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 28.1,
-    "pm_deg": 75.5,
-    "gm_dB": 18.7
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 28.2,
-    "pm_deg": 78.2,
-    "gm_dB": 15.4
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 49.9,
-    "pm_deg": 61.8,
-    "gm_dB": 14.8
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 52.0,
-    "pm_deg": 70.3,
-    "gm_dB": 13.0
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 52.6,
-    "pm_deg": 75.2,
-    "gm_dB": 10.1
-   },
-   {
-    "iload": 1.5,
     "cout_uF": 38.9,
     "q": 0.5,
-    "fc_kHz": 35.6,
-    "pm_deg": 68.5,
-    "gm_dB": 18.1
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 36.4,
-    "pm_deg": 75.0,
-    "gm_dB": 16.3
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 36.6,
-    "pm_deg": 78.5,
-    "gm_dB": 13.2
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 27.7,
-    "pm_deg": 71.8,
-    "gm_dB": 20.7
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 28.0,
-    "pm_deg": 77.0,
-    "gm_dB": 18.7
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 28.1,
-    "pm_deg": 79.7,
-    "gm_dB": 15.5
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 49.7,
-    "pm_deg": 64.6,
-    "gm_dB": 15.0
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 51.8,
-    "pm_deg": 72.9,
-    "gm_dB": 13.1
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 52.4,
-    "pm_deg": 77.8,
-    "gm_dB": 10.1
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 35.5,
-    "pm_deg": 71.2,
+    "fc_kHz": 35.0,
+    "pm_deg": 67.2,
     "gm_dB": 18.3
    },
    {
+    "iload": 0.3,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 35.7,
+    "pm_deg": 73.6,
+    "gm_dB": 16.4
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 35.9,
+    "pm_deg": 77.1,
+    "gm_dB": 13.3
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 27.2,
+    "pm_deg": 70.4,
+    "gm_dB": 20.8
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 27.5,
+    "pm_deg": 75.5,
+    "gm_dB": 18.9
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 27.6,
+    "pm_deg": 78.2,
+    "gm_dB": 15.6
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 48.9,
+    "pm_deg": 62.2,
+    "gm_dB": 15.0
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 50.9,
+    "pm_deg": 70.6,
+    "gm_dB": 13.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 51.5,
+    "pm_deg": 75.4,
+    "gm_dB": 10.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 34.9,
+    "pm_deg": 68.8,
+    "gm_dB": 18.3
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 35.7,
+    "pm_deg": 75.2,
+    "gm_dB": 16.5
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 35.9,
+    "pm_deg": 78.6,
+    "gm_dB": 13.3
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 27.1,
+    "pm_deg": 72.0,
+    "gm_dB": 20.9
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 27.5,
+    "pm_deg": 77.1,
+    "gm_dB": 18.9
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 27.6,
+    "pm_deg": 79.7,
+    "gm_dB": 15.6
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 48.8,
+    "pm_deg": 65.0,
+    "gm_dB": 15.2
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 50.7,
+    "pm_deg": 73.2,
+    "gm_dB": 13.3
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 51.3,
+    "pm_deg": 78.0,
+    "gm_dB": 10.3
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 34.8,
+    "pm_deg": 71.5,
+    "gm_dB": 18.4
+   },
+   {
     "iload": 3.5,
     "cout_uF": 38.9,
     "q": 1.0,
-    "fc_kHz": 36.3,
-    "pm_deg": 77.6,
-    "gm_dB": 16.3
+    "fc_kHz": 35.5,
+    "pm_deg": 77.8,
+    "gm_dB": 16.5
    },
    {
     "iload": 3.5,
     "cout_uF": 38.9,
     "q": 2.0,
-    "fc_kHz": 36.5,
-    "pm_deg": 81.1,
-    "gm_dB": 13.2
+    "fc_kHz": 35.7,
+    "pm_deg": 81.2,
+    "gm_dB": 13.4
    },
    {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 0.5,
-    "fc_kHz": 27.6,
-    "pm_deg": 74.5,
-    "gm_dB": 20.8
+    "fc_kHz": 27.1,
+    "pm_deg": 74.7,
+    "gm_dB": 20.9
    },
    {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 1.0,
-    "fc_kHz": 28.0,
-    "pm_deg": 79.6,
-    "gm_dB": 18.7
+    "fc_kHz": 27.4,
+    "pm_deg": 79.7,
+    "gm_dB": 18.9
    },
    {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 2.0,
-    "fc_kHz": 28.0,
+    "fc_kHz": 27.5,
     "pm_deg": 82.3,
-    "gm_dB": 15.5
+    "gm_dB": 15.7
    }
   ]
  },
@@ -454,217 +454,217 @@
     "iload": 0.3,
     "cout_uF": 27.3,
     "q": 0.5,
-    "fc_kHz": 35.0,
-    "pm_deg": 66.4,
-    "gm_dB": 18.6
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 35.7,
-    "pm_deg": 72.9,
-    "gm_dB": 16.3
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 35.9,
-    "pm_deg": 76.3,
-    "gm_dB": 12.9
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 24.8,
-    "pm_deg": 69.3,
-    "gm_dB": 22.0
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 25.1,
-    "pm_deg": 74.1,
-    "gm_dB": 19.6
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 25.2,
-    "pm_deg": 76.5,
-    "gm_dB": 16.0
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 19.3,
-    "pm_deg": 69.9,
-    "gm_dB": 24.5
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 19.4,
-    "pm_deg": 73.6,
-    "gm_dB": 22.0
-   },
-   {
-    "iload": 0.3,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 19.5,
-    "pm_deg": 75.5,
-    "gm_dB": 18.3
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 34.9,
-    "pm_deg": 68.7,
-    "gm_dB": 18.7
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 1.0,
-    "fc_kHz": 35.6,
-    "pm_deg": 75.1,
-    "gm_dB": 16.4
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 27.3,
-    "q": 2.0,
-    "fc_kHz": 35.8,
-    "pm_deg": 78.5,
-    "gm_dB": 12.9
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 0.5,
-    "fc_kHz": 24.8,
-    "pm_deg": 71.6,
-    "gm_dB": 22.0
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 1.0,
-    "fc_kHz": 25.1,
-    "pm_deg": 76.3,
-    "gm_dB": 19.6
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 38.9,
-    "q": 2.0,
-    "fc_kHz": 25.1,
-    "pm_deg": 78.7,
-    "gm_dB": 16.0
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 0.5,
-    "fc_kHz": 19.3,
-    "pm_deg": 72.1,
-    "gm_dB": 24.6
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 1.0,
-    "fc_kHz": 19.4,
-    "pm_deg": 75.8,
-    "gm_dB": 22.0
-   },
-   {
-    "iload": 1.5,
-    "cout_uF": 50.6,
-    "q": 2.0,
-    "fc_kHz": 19.4,
-    "pm_deg": 77.7,
-    "gm_dB": 18.3
-   },
-   {
-    "iload": 3.5,
-    "cout_uF": 27.3,
-    "q": 0.5,
-    "fc_kHz": 34.7,
-    "pm_deg": 72.6,
+    "fc_kHz": 34.3,
+    "pm_deg": 66.6,
     "gm_dB": 18.8
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 27.3,
     "q": 1.0,
-    "fc_kHz": 35.4,
-    "pm_deg": 78.9,
-    "gm_dB": 16.4
+    "fc_kHz": 35.0,
+    "pm_deg": 73.0,
+    "gm_dB": 16.5
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 27.3,
     "q": 2.0,
-    "fc_kHz": 35.6,
-    "pm_deg": 82.3,
-    "gm_dB": 12.9
+    "fc_kHz": 35.2,
+    "pm_deg": 76.3,
+    "gm_dB": 13.1
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 38.9,
     "q": 0.5,
-    "fc_kHz": 24.7,
-    "pm_deg": 75.4,
+    "fc_kHz": 24.4,
+    "pm_deg": 69.4,
     "gm_dB": 22.1
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 38.9,
     "q": 1.0,
-    "fc_kHz": 24.9,
-    "pm_deg": 80.1,
-    "gm_dB": 19.7
+    "fc_kHz": 24.6,
+    "pm_deg": 74.0,
+    "gm_dB": 19.8
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 38.9,
     "q": 2.0,
-    "fc_kHz": 25.0,
-    "pm_deg": 82.4,
-    "gm_dB": 16.0
+    "fc_kHz": 24.7,
+    "pm_deg": 76.4,
+    "gm_dB": 16.2
    },
    {
-    "iload": 3.5,
+    "iload": 0.3,
     "cout_uF": 50.6,
     "q": 0.5,
-    "fc_kHz": 19.2,
-    "pm_deg": 75.9,
+    "fc_kHz": 18.9,
+    "pm_deg": 69.9,
     "gm_dB": 24.7
    },
    {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 19.0,
+    "pm_deg": 73.5,
+    "gm_dB": 22.2
+   },
+   {
+    "iload": 0.3,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 19.1,
+    "pm_deg": 75.3,
+    "gm_dB": 18.5
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 34.2,
+    "pm_deg": 68.9,
+    "gm_dB": 18.9
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 34.9,
+    "pm_deg": 75.2,
+    "gm_dB": 16.6
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 35.1,
+    "pm_deg": 78.6,
+    "gm_dB": 13.1
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 24.3,
+    "pm_deg": 71.7,
+    "gm_dB": 22.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 24.6,
+    "pm_deg": 76.3,
+    "gm_dB": 19.8
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 24.6,
+    "pm_deg": 78.7,
+    "gm_dB": 16.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 18.9,
+    "pm_deg": 72.1,
+    "gm_dB": 24.8
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 1.0,
+    "fc_kHz": 19.0,
+    "pm_deg": 75.7,
+    "gm_dB": 22.2
+   },
+   {
+    "iload": 1.5,
+    "cout_uF": 50.6,
+    "q": 2.0,
+    "fc_kHz": 19.0,
+    "pm_deg": 77.6,
+    "gm_dB": 18.5
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 0.5,
+    "fc_kHz": 34.0,
+    "pm_deg": 72.9,
+    "gm_dB": 19.0
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 1.0,
+    "fc_kHz": 34.7,
+    "pm_deg": 79.0,
+    "gm_dB": 16.6
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 27.3,
+    "q": 2.0,
+    "fc_kHz": 34.9,
+    "pm_deg": 82.3,
+    "gm_dB": 13.1
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 0.5,
+    "fc_kHz": 24.2,
+    "pm_deg": 75.5,
+    "gm_dB": 22.3
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 1.0,
+    "fc_kHz": 24.4,
+    "pm_deg": 80.0,
+    "gm_dB": 19.8
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 38.9,
+    "q": 2.0,
+    "fc_kHz": 24.5,
+    "pm_deg": 82.4,
+    "gm_dB": 16.2
+   },
+   {
+    "iload": 3.5,
+    "cout_uF": 50.6,
+    "q": 0.5,
+    "fc_kHz": 18.8,
+    "pm_deg": 75.9,
+    "gm_dB": 24.8
+   },
+   {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 1.0,
-    "fc_kHz": 19.3,
-    "pm_deg": 79.5,
-    "gm_dB": 22.1
+    "fc_kHz": 18.9,
+    "pm_deg": 79.4,
+    "gm_dB": 22.3
    },
    {
     "iload": 3.5,
     "cout_uF": 50.6,
     "q": 2.0,
-    "fc_kHz": 19.3,
-    "pm_deg": 81.4,
-    "gm_dB": 18.3
+    "fc_kHz": 18.9,
+    "pm_deg": 81.3,
+    "gm_dB": 18.5
    }
   ]
  }

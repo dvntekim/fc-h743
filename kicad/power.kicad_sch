@@ -6,7 +6,7 @@
 	(paper "A2")
 	(title_block
 		(title "GPS-denied quadrotor flight controller: Power")
-		(date "2026-10-31")
+		(date "2026-11-06")
 		(rev "A")
 		(company "Daniel K (dvntekim)")
 		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")
@@ -10032,7 +10032,7 @@
 				)
 			)
 		)
-		(property "Value" "52.3k"
+		(property "Value" "53.6k"
 			(at 403.86 96.396 90)
 			(effects
 				(font
@@ -10058,7 +10058,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Vout = 0.8 V x (1 + 52.3k/10k) = 4.98 V"
+		(property "Description" "Vout = 0.8 V x (1 + 53.6k/10k) = 5.09 V: above typical USB VBUS so the LM66100 OR prefers the buck, headroom for copper drop to the 5 V switches, load-release peak < 5.5 V"
 			(at 403.86 93.98 0)
 			(effects
 				(font
@@ -10067,7 +10067,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C26982"
+		(property "LCSC" "C53398"
 			(at 403.86 93.98 0)
 			(effects
 				(font
