@@ -50,7 +50,7 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 | Thermal | board conduction/convection model | 37–86 °C board; IMU heater cannot regulate (open) — `sim/thermal` |
 | Firmware on the netlist | PX4 board port + Simantic STM32H743 simulator, scenario generated from the netlist | **PASS**: ICM-45686 on SPI1, BMI088 on SPI2, BMP581 on I2C4 @0x47, CAN1 RX, SD logger, NSH — [docs/verification.md](docs/verification.md) |
 | Firmware build | PX4 at c0d2c54, GCC 13.2, Linux CI + macOS | builds, flash 91 % |
-| Manufacturability | JLCPCB online DFM, second fab | pending (needs the owner's logins) |
+| Manufacturability | JLCDFM (JLCPCB online DFM) | 1 real finding fixed (vias near mounting holes), other flags within JLC's limits — [docs/design_review.md](docs/design_review.md); PCBWay pending |
 | Independent review | second engineer | **not done** |
 
 ## Board

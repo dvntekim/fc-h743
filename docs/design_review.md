@@ -106,3 +106,17 @@ neck so the heater warms only the IMUs.
 | Single-ended 0.127 mm: F.Cu 67-73 ohm, In2 64-71 ohm | OK for SPI / SDMMC at these lengths |
 | Coupling 0.127 mm tracks: K = 0.33 at 0.10 mm gap, 0.19 at 0.20 mm, 0.05 at 0.50 mm (F.Cu); In2/In3 broadside K = 0.12 | — |
 | Crosstalk scan of every clock net on the routed board | worst SD_CLK -> CAN1_H 1.1 % of swing (15 mm at 0.14 mm); all others < 1 % | OK |
+
+## Fab DFM: JLCDFM (JLCPCB's online DFM), 2026-11-07
+Gerber zip of rev-A-draft2 uploaded through the JLCPCB quote page: detected as 6 layers, 50 × 50 mm,
+via-in-pad (POFV) supported; all 13 layers and both drill files recognised.
+
+| JLCDFM check | Danger / warning | What it is | Result |
+|---|---|---|---|
+| Via to PTH spacing | 2 / 0 | GND stitching vias 0.37 mm from the edge of the 4 mm mounting holes | **FIXED** (rev-A-draft3): 21 stitching vias within 1 mm of a mounting-hole edge removed; DRC 0/0/0, no GND islands |
+| Annular ring | 19 / 81 | 0.35/0.15 mm vias (0.10 mm ring) and 0.45/0.20 mm vias (0.125 mm ring) | OK against JLC's multilayer rule (via diameter ≥ hole + 0.10 mm). The 0.15 mm drill puts the board in JLC's higher-cost via tier: select "Min via hole 0.15 mm" on the quote |
+| Via to pad / pad spacing | 5 / 2, 9 / 87 | every hit is a via touching or near its own pad, same net (checked from the board file) | OK with JLC's default epoxy-filled, capped vias on 6-layer boards |
+| Slot width | 4 / 0 | USB-C shell slots, 0.6 mm | OK: JLC multilayer plated slot minimum is 0.35 mm |
+| Trace spacing, THT to SMD, mask opening exposing trace | 1, 2, 1 | spacings at or above the 0.10 mm DRC rule; same-net pad exits | OK; DRC enforces 0.10 mm to other nets |
+| Silkscreen to pad / hole | 100 / 0 each | silk touching pads and via holes (the 61 DRC silk warnings) | Cosmetic: the fab clips silk off pads and holes |
+| Drill layers | — | JLCDFM's viewer labels both drill files "plated"; the NPTH file's header says `FileFunction,NonPlated` | Check NPTH holes in JLC's order preview |
