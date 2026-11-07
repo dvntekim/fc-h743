@@ -1,0 +1,364 @@
+[
+ {
+  "design": "revA_0.86W",
+  "kind": null,
+  "ring": null,
+  "heater_W": 0.86,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 51.3,
+    "imu_heater_full_C": 68.8,
+    "heater_lift_C": 17.6,
+    "mcu_C": 68.1
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 22.3,
+    "imu_heater_full_C": 29.0,
+    "heater_lift_C": 6.7,
+    "mcu_C": 28.4
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 47.3,
+    "imu_heater_full_C": 54.0,
+    "heater_lift_C": 6.7,
+    "mcu_C": 53.4
+   }
+  },
+  "holdable_window_C": [
+   51.3,
+   29.0
+  ],
+  "window_width_C": -22.2
+ },
+ {
+  "design": "revA_1.50W",
+  "kind": null,
+  "ring": null,
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 51.3,
+    "imu_heater_full_C": 81.8,
+    "heater_lift_C": 30.5,
+    "mcu_C": 79.6
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 22.3,
+    "imu_heater_full_C": 34.0,
+    "heater_lift_C": 11.7,
+    "mcu_C": 32.0
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 47.3,
+    "imu_heater_full_C": 59.0,
+    "heater_lift_C": 11.7,
+    "mcu_C": 57.0
+   }
+  },
+  "holdable_window_C": [
+   51.3,
+   34.0
+  ],
+  "window_width_C": -17.3
+ },
+ {
+  "design": "inplace_slot_11x9_0.86W",
+  "kind": "slot",
+  "heater_moved": true,
+  "ring": [
+   5.5,
+   4.5,
+   1.0,
+   [
+    [
+     100.0,
+     95.0,
+     1.0
+    ],
+    [
+     100.0,
+     105.0,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 0.86,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 51.1,
+    "imu_heater_full_C": 83.3,
+    "heater_lift_C": 32.2,
+    "mcu_C": 68.9
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 21.7,
+    "imu_heater_full_C": 40.3,
+    "heater_lift_C": 18.5,
+    "mcu_C": 28.5
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 45.9,
+    "imu_heater_full_C": 64.4,
+    "heater_lift_C": 18.5,
+    "mcu_C": 53.7
+   }
+  },
+  "holdable_window_C": [
+   51.1,
+   40.3
+  ],
+  "window_width_C": -10.8
+ },
+ {
+  "design": "inplace_slot_11x9_1.50W",
+  "kind": "slot",
+  "heater_moved": true,
+  "ring": [
+   5.5,
+   4.5,
+   1.0,
+   [
+    [
+     100.0,
+     95.0,
+     1.0
+    ],
+    [
+     100.0,
+     105.0,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 51.1,
+    "imu_heater_full_C": 107.0,
+    "heater_lift_C": 55.9,
+    "mcu_C": 80.6
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 21.7,
+    "imu_heater_full_C": 54.0,
+    "heater_lift_C": 32.2,
+    "mcu_C": 32.1
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 45.9,
+    "imu_heater_full_C": 78.1,
+    "heater_lift_C": 32.2,
+    "mcu_C": 57.2
+   }
+  },
+  "holdable_window_C": [
+   51.1,
+   54.0
+  ],
+  "window_width_C": 2.9
+ },
+ {
+  "design": "moved_top_right_0.86W",
+  "kind": "slot",
+  "center": [
+   113.0,
+   92.0
+  ],
+  "ring": [
+   5.0,
+   4.0,
+   1.0,
+   [
+    [
+     107.5,
+     92.0,
+     1.0
+    ],
+    [
+     118.5,
+     92.0,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 0.86,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 48.3,
+    "imu_heater_full_C": 86.1,
+    "heater_lift_C": 37.8,
+    "mcu_C": 67.2
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 19.8,
+    "imu_heater_full_C": 43.0,
+    "heater_lift_C": 23.2,
+    "mcu_C": 27.2
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 42.8,
+    "imu_heater_full_C": 66.0,
+    "heater_lift_C": 23.2,
+    "mcu_C": 52.4
+   }
+  },
+  "holdable_window_C": [
+   48.3,
+   43.0
+  ],
+  "window_width_C": -5.3
+ },
+ {
+  "design": "moved_top_right_1.50W",
+  "kind": "slot",
+  "center": [
+   113.0,
+   92.0
+  ],
+  "ring": [
+   5.0,
+   4.0,
+   1.0,
+   [
+    [
+     107.5,
+     92.0,
+     1.0
+    ],
+    [
+     118.5,
+     92.0,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 48.3,
+    "imu_heater_full_C": 114.0,
+    "heater_lift_C": 65.7,
+    "mcu_C": 77.5
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 19.8,
+    "imu_heater_full_C": 60.0,
+    "heater_lift_C": 40.3,
+    "mcu_C": 29.7
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 42.8,
+    "imu_heater_full_C": 83.1,
+    "heater_lift_C": 40.3,
+    "mcu_C": 54.8
+   }
+  },
+  "holdable_window_C": [
+   48.3,
+   60.0
+  ],
+  "window_width_C": 11.8
+ },
+ {
+  "design": "moved_bottom_right_0.86W",
+  "kind": "slot",
+  "center": [
+   113.0,
+   108.5
+  ],
+  "ring": [
+   5.0,
+   4.0,
+   1.0,
+   [
+    [
+     107.5,
+     108.5,
+     1.0
+    ],
+    [
+     118.5,
+     108.5,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 0.86,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 49.8,
+    "imu_heater_full_C": 91.1,
+    "heater_lift_C": 41.3,
+    "mcu_C": 66.8
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 20.9,
+    "imu_heater_full_C": 46.5,
+    "heater_lift_C": 25.6,
+    "mcu_C": 26.9
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 44.2,
+    "imu_heater_full_C": 69.8,
+    "heater_lift_C": 25.6,
+    "mcu_C": 52.0
+   }
+  },
+  "holdable_window_C": [
+   49.8,
+   46.5
+  ],
+  "window_width_C": -3.3
+ },
+ {
+  "design": "moved_bottom_right_1.50W",
+  "kind": "slot",
+  "center": [
+   113.0,
+   108.5
+  ],
+  "ring": [
+   5.0,
+   4.0,
+   1.0,
+   [
+    [
+     107.5,
+     108.5,
+     1.0
+    ],
+    [
+     118.5,
+     108.5,
+     1.0
+    ]
+   ]
+  ],
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 49.8,
+    "imu_heater_full_C": 121.6,
+    "heater_lift_C": 71.8,
+    "mcu_C": 76.9
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 20.9,
+    "imu_heater_full_C": 65.4,
+    "heater_lift_C": 44.5,
+    "mcu_C": 29.2
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 44.2,
+    "imu_heater_full_C": 88.7,
+    "heater_lift_C": 44.5,
+    "mcu_C": 54.3
+   }
+  },
+  "holdable_window_C": [
+   49.8,
+   65.4
+  ],
+  "window_width_C": 15.6
+ }
+]

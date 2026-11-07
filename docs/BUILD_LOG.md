@@ -84,6 +84,16 @@ a FRAM the board lacks, old parameter names, an SD write stall caused by the mod
 | Simantic re-run | same PASS with the patched firmware | — |
 | KiBot + GitHub Actions | first runs on a clean runner failed where the workspace passed: no KiCad symbol tables (580 ERC warnings), no ARM newlib (PX4 link), no lxml (KiBot), a 38-min PPA stall | library tables seeded, packages named explicitly, `.deb` cache + step timeout; only "stock footprint library not installed" is filtered (footprints are embedded and DRC checks parity) |
 
+## 12. Rev B, step 1: the IMU thermal requirement (analysis only)
+| Tool | Found | Decision |
+|---|---|---|
+| IMU datasheets | ICM-45686 accel bias drift reaches its own noise after 4.7 °C | hold within ±1.5 °C |
+| Island model (`sim/thermal/revB/island.py`) | under the MCU, no island works (best 2.9 °C window); the MCU 0.1 mm above dominates | move the IMUs off the MCU onto a slotted island |
+| Same, island moved off the MCU, 1.5 W | 48–60 °C holdable window | set point 55 °C, heater 1.5 W |
+| PX4 heater loop model | ±0.55 °C with default gains; fails only if isolation is half the model's figure | measure isolation first on hardware; add a hardware over-temperature cut-off |
+
+Details in [revB_thermal.md](revB_thermal.md). Layout is the next step.
+
 ## Open before ordering
 - Owner: licence choice, JLCPCB and second-fab DFM (logins), `SIMANTIC_TOKEN` secret, an independent
   reviewer.
