@@ -8,18 +8,67 @@ letters (rev A, rev B); a tag `rev-A-draftN` marks a draft of rev A that has not
 
 ## [Unreleased]
 
+## [rev-B-draft1] - 2026-11-08
+
+Rev B: the primary IMU moves onto a thermally isolated island so the heater can hold it at a set
+point. Everything below is simulated or rule-checked; nothing is built.
+
+### Before and after
+| | rev-A-draft3 | rev-B-draft1 |
+|---|---|---|
+| ICM-45686 location | B.Cu under the MCU | B.Cu on a slotted corner island (2 × 1 mm milled slots, copper-free edge bridges, 2.2 mm corner bridge) |
+| Heater | 4 × 120 Ω 1206 in parallel, 0.86 W | 2 × 12 Ω 2010 in series on the island, 1.08 W (0.54 W per 0.75 W part) |
+| Holdable IMU temperature window (routed copper, bench 25 °C + flight 15/35 °C) | **none** (−22.2 °C) | **45.6–57.8 °C** (12.1 °C) |
+| Heater lift, prop wash | 6.7 °C | 39.6 °C |
+| PX4 heater loop at the set point (15 °C flight) | cannot reach a set point | 0.52 °C steady error, ±0.34 °C takeoff transient |
+| Set point (`HEATER1_TEMP`) | 45 °C | 51 °C |
+| Hardware over-temperature cut-off | none | TMP302A on the island, trips at 60 °C |
+| Isolation the loop tolerates | — | ≥ 83 % of the modelled value (first number to measure on a built board) |
+| BMI088 | under the MCU, heated by the same ring | under the MCU, unheated; relies on PX4 thermal calibration |
+| ERC / DRC / parity | 0/0 · 0 errors, 0 unconnected · 0 | same |
+| +5V drop to the TPS2553 switches at their limits | 235 / 167 mV | 243 / 173 mV |
+| Impedance of a track at the slot keepout | — | +0.8 Ω (1.1 %) |
+| JLC BOM lines (`fab/bom_jlc.csv`) | 75 | 77 (12 Ω 2010 C3013299 replaces 120 Ω 1206; TMP302A C2877557 and 4.7 kΩ C25900 added) |
+
+### Changed
+- Heater: 2 × 12 Ω 2010 in series (R44 +5V→HEATER_MID, R45 HEATER_MID→HEATER_LO). Series keeps
+  +5V and HEATER_LO on F.Cu across the corner bridge with no via. R46/R47 removed. Gate
+  resistor R42 47 Ω → 4.7 kΩ so the cut-off can override the MCU.
+- Q2 (heater MOSFET) moved to F.Cu near the corner bridge; CS pull-ups for the ICM-45686 moved off
+  the island.
+- Firmware: `HEATER1_TEMP` 45 → 51 °C. IMU rotation `-R 6` → `-R 14` (ROLL_180_YAW_270) for both
+  IMUs: they are on the bottom side and PX4's drivers assume a top-side part, so rev A's yaw-only
+  rotation left Z inverted. Still to confirm with a tilt test.
+- Net classes: HEATER_LO and HEATER_MID in Supply (0.3 mm), 0.21 A.
+- Schematic and board title blocks rev B.
+
+### Added
+- U23 TMP302A (+ C62): open-drain OUT on HEATER_G, trip 60 °C, 10 °C hysteresis.
+- Board: two milled slots in Edge.Cuts, copper keepouts on the two edge bridges, 0.32 mm routing
+  keepouts around the slots (`scripts/slot_keepout.py`).
+- `sim/thermal/revB/island_routed.py` (rev A vs rev B on the routed copper), updated
+  `heater_loop.py`, `sim/si/slot_edge.py` (atlc, track beside a slot), rev B IR drop.
+- Scripts used for the rev B layout: `update_pcb.py` (scripted "update PCB from schematic"),
+  `revb_island.py`, `revb_place3.py`, `revb_series.py`, `restore_bmi.py`, `lock_export_isl.py`,
+  `viaspot.py`, `bridgecut.py`, `dedup.py`, `addcu.py`.
+
 ### Fixed
+- Autorouter leftovers: 1,300+ zero-length and duplicate track segments removed; stray stubs the
+  router added to USB, crystal and buck-boot nets removed so those nets match rev A exactly.
+
+### Not done in rev B
+- JLCDFM on the rev B Gerbers (the zip is ready; the browser pane cannot upload files).
+- +5V trunk to the 5 V switches: no free corridor left of the MCU without rerouting ~20 nets.
+- Inductor I_sat: no 4.7 µH part in the 5.4 × 5.2 mm footprint found above ~6.5 A; REVIEW item stays open.
+
+### Rev B analysis (from the earlier unreleased entry)
+- Requirement from the IMU datasheets: hold the ICM-45686 within ±1.5 °C (docs/revB_thermal.md).
+
+### Rev A drafts (unreleased fixes before rev B)
 - JLCDFM (2026-11-07) flagged GND stitching vias 0.37 mm from the 4 mm mounting holes. 21 stitching
   vias within 1 mm of a mounting-hole edge removed; DRC 0 errors, 0 unconnected, parity 0; no GND
   pour islands.
-
-### Added
 - Fab DFM results (JLCDFM) in docs/design_review.md; JLC quote settings in REVIEW.md.
-- Rev B thermal analysis (docs/revB_thermal.md, sim/thermal/revB/). Requirement from the IMU
-  datasheets: hold within ±1.5 °C. Rev A cannot (no holdable set point), nor can an island left
-  under the MCU (2.9 °C window at best). An island moved off the MCU with a 1.5 W heater gives a
-  48–60 °C window, and PX4's default heater loop holds ±0.55 °C there. The one modelled failure
-  is island isolation half as good as predicted. Layout not started.
 
 ## [rev-A-draft2] - 2026-11-06
 

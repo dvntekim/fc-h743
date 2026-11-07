@@ -13,9 +13,11 @@ param set-default BAT1_A_PER_V 40.0
 # GPS-denied indoor platform: no magnetometer on board
 param set-default SYS_HAS_MAG 0
 
-# IMU heater (PB9) holds the IMUs at 45 C
+# IMU heater (PB9) holds the ICM-45686 island at 51 C, inside the 45.6-57.8 C window the routed
+# rev B island can hold in every modelled case (docs/revB_thermal.md). A TMP302 on the island
+# cuts the heater in hardware at 60 C.
 param set-default SENS_EN_THERMAL 1
-param set-default HEATER1_TEMP 45
+param set-default HEATER1_TEMP 51
 
 # TELEM2: companion computer via uXRCE-DDS
 param set-default UXRCE_DDS_CFG 102

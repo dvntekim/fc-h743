@@ -24,9 +24,9 @@ controller, so the electrical effort goes into clean sensing, timing and telemet
 
 | Area | What is on the board | Why |
 |---|---|---|
-| Primary IMU | TDK ICM-45686 on SPI1, **clocked by a 32 kHz reference from TIM2_CH3 (PB10)** | Locks the IMU's ODR to the MCU clock: no sample-rate drift between IMU and controller. PX4 `icm45686 -C 32000` |
-| Second IMU | Bosch BMI088 on its own bus (SPI2) | Vibration-robust accel; independent bus so one faulty sensor cannot stall the other |
-| IMU thermal control | 4 × 120 Ω heater ring around both IMUs, AO3400A on PB9 | Holds the IMUs at 45 °C so bias does not drift with ambient (PX4 `HEATER1_TEMP`) |
+| Primary IMU | TDK ICM-45686 on SPI1, **clocked by a 32 kHz reference from TIM2_CH3 (PB10)**, on a thermally isolated corner island (rev B) | Locks the IMU's ODR to the MCU clock: no sample-rate drift between IMU and controller. PX4 `icm45686 -C 32000` |
+| Second IMU | Bosch BMI088 on its own bus (SPI2), under the MCU | Vibration-robust accel; independent bus so one faulty sensor cannot stall the other |
+| IMU thermal control | Slotted island (two 1 mm milled slots, 2.2 mm bridge), 2 × 12 Ω 2010 heater in series (1.08 W), AO3400A on PB9, TMP302A hardware cut-off at 60 °C | Holds the ICM-45686 at 51 °C so bias does not drift with ambient (PX4 `HEATER1_TEMP`); [docs/revB_thermal.md](docs/revB_thermal.md) |
 | Barometer | Bosch BMP581 on I2C4 (0x47) | Lowest-noise MEMS baro in the class |
 | CAN | 2 × TI TCAN1462V, CAN FD with signal improvement (8 Mbit/s) | DroneCAN/Cyphal sensors (flow, range) at FD rates |
 | Motor outputs | 4 × bidirectional DShot on TIM1 + ESC serial telemetry (UART8) | RPM feedback for motor-aware learned control |
@@ -42,27 +42,38 @@ models, a power-stage simulation, and PX4 booting on a simulated STM32H743 with 
 map. Each model states its limits in its own file. The first built board must confirm the
 numbers, starting with the bench plan in [REVIEW.md](REVIEW.md).
 
-Rev B is in progress: [docs/revB_thermal.md](docs/revB_thermal.md) sets an IMU temperature
-requirement from the datasheets and shows the IMUs must move off the MCU onto an isolated island
-to meet it. The analysis is done; the layout is not.
+**Rev B (current, rev-B-draft1)** is laid out and checked. What is simulated and what is unbuilt:
+
+| Claim | Basis | Status |
+|---|---|---|
+| ICM-45686 must be held within ±1.5 °C | datasheet drift and noise figures | derived, not measured |
+| Rev A cannot hold any IMU temperature; rev B holds 45.6–57.8 °C | 2D thermal model of each routed board | **simulated** |
+| PX4's heater loop holds 51 °C within ±0.55 °C | two-node model of the loop as coded in PX4 | **simulated**; fails below ~83 % of the modelled island isolation |
+| TMP302 cuts the heater at 60 °C | TI datasheet strap table | unbuilt |
+| Slots cost < 1.1 % impedance on adjacent tracks | atlc 2D field solver | simulated |
+| IMU rotation `-R 14` | PX4 driver frame convention + footprint angle | unbuilt: tilt test on the bench |
+| The board can be made | KiCad DRC with JLC rules (0 errors) | JLCDFM not yet run on rev B |
+
+Nothing is ordered. The first built board must measure the island isolation (heater step, K/W) before
+anything else; [docs/revB_thermal.md](docs/revB_thermal.md) has the bench plan.
 
 ## Verification status
 
 | Check | Tool | Result |
 |---|---|---|
 | Electrical rules | KiCad 9 ERC | **0 errors, 0 warnings** |
-| Design rules | KiCad 9 DRC (JLCPCB 6-layer limits, `kicad/fc.kicad_dru`) | **0 errors, 0 unconnected** (61 silkscreen-cosmetic warnings) |
+| Design rules | KiCad 9 DRC (JLCPCB 6-layer limits, `kicad/fc.kicad_dru`) | **0 errors, 0 unconnected** (59 silkscreen-cosmetic warnings) |
 | Schematic ↔ PCB parity | KiCad 9 DRC `--schematic-parity` | 0 issues |
 | Vendor guides | every IC against its datasheet / layout guide | [docs/design_review.md](docs/design_review.md): 4 fixes made, 4 items open |
 | Pin map | `scripts/pinmap_check.py` against ST's pin data (KiCad STM32H743VITx symbol) | **PASS**, 74 pins — [docs/pinmap.md](docs/pinmap.md) |
-| BOM availability | JLCPCB parts API | 69/69 parts in stock on 2026-11-06 — [docs/bom_check.md](docs/bom_check.md) |
+| BOM availability | JLCPCB parts API | rev A 69/69 in stock on 2026-11-06 — [docs/bom_check.md](docs/bom_check.md); rev B adds 3 lines (12 Ω 2010 checked: 7,000 in stock; TMP302A and 4.7 kΩ to re-check) |
 | 5 V buck loop | ngspice averaged current-mode model | crossover 19–35 kHz, phase margin ≥ 66.6°, gain margin ≥ 13.1 dB over 27 corners; load step 4.78–5.39 V — [docs/power_sim.md](docs/power_sim.md) |
-| Impedance and crosstalk | atlc 2D field solver + scan of the routed board | USB 84.7 Ω diff; worst crosstalk 1.1 % — `sim/si` |
-| DC voltage drop | resistive-mesh solver on the routed copper | VBAT ≤ 56 mV at 3 A, +3V3 ≤ 46 mV; +5V to the 5 V switches 235 mV at their limits (open) — `sim/pi` |
-| Thermal | board conduction/convection model | 37–86 °C board; IMU heater cannot regulate (open) — `sim/thermal` |
+| Impedance and crosstalk | atlc 2D field solver + scan of the routed board | USB 84.7 Ω diff; worst crosstalk 1.1 %; track beside an island slot +1.1 % — `sim/si` |
+| DC voltage drop | resistive-mesh solver on the routed copper | VBAT ≤ 56 mV at 3 A, +3V3 ≤ 46 mV; +5V to the 5 V switches 243 mV at their limits (open), heater 150 mV — `sim/pi` |
+| Thermal | board conduction/convection model on the routed copper | rev A: no holdable IMU temperature; **rev B: 45.6–57.8 °C window, PX4 loop ±0.55 °C at 51 °C** — [docs/revB_thermal.md](docs/revB_thermal.md) |
 | Firmware on the netlist | PX4 board port + Simantic STM32H743 simulator, scenario generated from the netlist | **PASS**: ICM-45686 on SPI1, BMI088 on SPI2, BMP581 on I2C4 @0x47, CAN1 RX, SD logger, NSH — [docs/verification.md](docs/verification.md) |
 | Firmware build | PX4 at c0d2c54, GCC 13.2, Linux CI + macOS | builds, flash 91 % |
-| Manufacturability | JLCDFM (JLCPCB online DFM) | 1 real finding fixed (vias near mounting holes), other flags within JLC's limits — [docs/design_review.md](docs/design_review.md); PCBWay pending |
+| Manufacturability | JLCDFM (JLCPCB online DFM) | rev A: 1 real finding fixed, other flags within JLC's limits — [docs/design_review.md](docs/design_review.md); **rev B not yet run**; PCBWay pending |
 | Independent review | second engineer | **not done** |
 
 ## Board
@@ -74,10 +85,13 @@ to meet it. The analysis is done; the layout is not.
 - **USB D+/D−:** 0.25 mm / 0.15 mm gap on F.Cu over In1 ≈ 90 Ω differential (IPC-2141 estimate;
   confirm with JLCPCB's impedance calculator). USB FS is forgiving at this length.
 - **Net classes:** HighCurrent (VBAT, switch node) 0.8 mm · Power 0.4 mm · Supply (3V3, VDDA) 0.3 mm ·
-  signals 0.127 mm / 0.1 mm clearance · vias 0.45/0.2 mm, plus 20 at 0.35/0.15 mm of which 17 are via-in-pad
+  signals 0.127 mm / 0.1 mm clearance · vias 0.45/0.2 mm, plus 22 at 0.35/0.15 mm of which 16 are via-in-pad
   (order with epoxy-filled, capped vias — JLC includes this on 6-layer boards; confirm on the quote).
-- **Parts on both sides.** IMUs sit on the bottom inside the MCU's pin ring so their SPI runs are a few mm.
-  Expected PX4 rotation `-R 6` (yaw 270°) — verify on the bench (REVIEW.md).
+- **Parts on both sides.** The BMI088 sits on the bottom inside the MCU's pin ring; the ICM-45686 sits on
+  the bottom of the island in the top-right corner, its heater on the top.
+  Expected PX4 rotation `-R 14` (roll 180°, yaw 270°) for both — verify on the bench (REVIEW.md).
+- **IMU island:** two 1 mm milled slots in Edge.Cuts, copper-free edge bridges, 2.2 mm corner bridge
+  carrying 11 nets and the In1/In4 planes; 0.32 mm routing keepout beside each slot.
 
 ## Deviations from the spec doc (on purpose)
 

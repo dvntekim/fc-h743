@@ -1,166 +1,164 @@
 {
- "PX4 defaults (P 1.0, I 0.025)": {
+ "PX4 defaults, 15 C flight": {
   "bench hold (200-300 s)": {
-   "max_err_C": 0.22,
-   "mean_err_C": -0.0,
-   "p2p_ripple_C": 0.406
+   "max_err_C": 0.18,
+   "mean_err_C": 0.01,
+   "p2p_ripple_C": 0.323
   },
   "takeoff transient (300-420 s)": {
-   "max_err_C": 0.38,
-   "mean_err_C": -0.19,
+   "max_err_C": 0.34,
+   "mean_err_C": -0.17,
+   "p2p_ripple_C": 0.043
+  },
+  "flight hold (600-900 s)": {
+   "max_err_C": 0.52,
+   "mean_err_C": -0.51,
+   "p2p_ripple_C": 0.0
+  },
+  "duty_flight_mean": 0.81
+ },
+ "PX4 defaults, 35 C flight": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.18,
+   "mean_err_C": 0.01,
+   "p2p_ripple_C": 0.323
+  },
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 0.21,
+   "mean_err_C": -0.0,
+   "p2p_ripple_C": 0.122
+  },
+  "flight hold (600-900 s)": {
+   "max_err_C": 0.03,
+   "mean_err_C": -0.0,
+   "p2p_ripple_C": 0.051
+  },
+  "duty_flight_mean": 0.27
+ },
+ "sensor lag x3": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.27,
+   "mean_err_C": 0.06,
+   "p2p_ripple_C": 0.447
+  },
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 0.34,
+   "mean_err_C": -0.18,
+   "p2p_ripple_C": 0.043
+  },
+  "flight hold (600-900 s)": {
+   "max_err_C": 0.52,
+   "mean_err_C": -0.51,
+   "p2p_ripple_C": 0.0
+  },
+  "duty_flight_mean": 0.81
+ },
+ "island heat capacity x2": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.16,
+   "mean_err_C": 0.01,
+   "p2p_ripple_C": 0.303
+  },
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 0.34,
+   "mean_err_C": -0.17,
    "p2p_ripple_C": 0.044
   },
   "flight hold (600-900 s)": {
-   "max_err_C": 0.55,
-   "mean_err_C": -0.55,
+   "max_err_C": 0.52,
+   "mean_err_C": -0.51,
    "p2p_ripple_C": 0.0
   },
-  "duty_flight_mean": 0.85
+  "duty_flight_mean": 0.81
  },
- "P 0.3, I 0.01, IMAX 0.25": {
+ "island heat capacity /2": {
   "bench hold (200-300 s)": {
-   "max_err_C": 0.37,
-   "mean_err_C": -0.02,
-   "p2p_ripple_C": 0.695
+   "max_err_C": 0.0,
+   "mean_err_C": 0.0,
+   "p2p_ripple_C": 0.0
   },
   "takeoff transient (300-420 s)": {
-   "max_err_C": 1.19,
-   "mean_err_C": -0.61,
-   "p2p_ripple_C": 0.14
+   "max_err_C": 0.34,
+   "mean_err_C": -0.17,
+   "p2p_ripple_C": 0.043
   },
   "flight hold (600-900 s)": {
-   "max_err_C": 1.75,
-   "mean_err_C": -1.73,
-   "p2p_ripple_C": 0.001
+   "max_err_C": 0.52,
+   "mean_err_C": -0.51,
+   "p2p_ripple_C": 0.0
   },
-  "duty_flight_mean": 0.82
+  "duty_flight_mean": 0.81
  },
- "P 0.3, I 0.01, IMAX 0.25, flight 35 C": {
+ "island isolation x2 better": {
   "bench hold (200-300 s)": {
-   "max_err_C": 0.37,
-   "mean_err_C": -0.02,
-   "p2p_ripple_C": 0.695
+   "max_err_C": 0.12,
+   "mean_err_C": 0.01,
+   "p2p_ripple_C": 0.219
+  },
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 0.19,
+   "mean_err_C": -0.01,
+   "p2p_ripple_C": 0.022
+  },
+  "flight hold (600-900 s)": {
+   "max_err_C": 0.11,
+   "mean_err_C": -0.11,
+   "p2p_ripple_C": 0.0
+  },
+  "duty_flight_mean": 0.41
+ },
+ "island isolation x0.85": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.18,
+   "mean_err_C": -0.0,
+   "p2p_ripple_C": 0.347
   },
   "takeoff transient (300-420 s)": {
    "max_err_C": 0.45,
-   "mean_err_C": -0.01,
-   "p2p_ripple_C": 0.142
+   "mean_err_C": -0.24,
+   "p2p_ripple_C": 0.051
   },
   "flight hold (600-900 s)": {
-   "max_err_C": 0.01,
-   "mean_err_C": -0.0,
+   "max_err_C": 0.66,
+   "mean_err_C": -0.65,
    "p2p_ripple_C": 0.0
   },
-  "duty_flight_mean": 0.3
+  "duty_flight_mean": 0.95
  },
- "robustness": {
-  "defaults, flight 35C": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.22,
-    "mean_err_C": -0.0,
-    "p2p_ripple_C": 0.406
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 0.16,
-    "mean_err_C": -0.0,
-    "p2p_ripple_C": 0.08
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 0.0,
-    "mean_err_C": -0.0,
-    "p2p_ripple_C": 0.0
-   },
-   "duty_flight_mean": 0.3
+ "island isolation x0.75": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.18,
+   "mean_err_C": -0.0,
+   "p2p_ripple_C": 0.334
   },
-  "sensor lag x3": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.29,
-    "mean_err_C": 0.05,
-    "p2p_ripple_C": 0.527
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 0.38,
-    "mean_err_C": -0.21,
-    "p2p_ripple_C": 0.044
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 0.55,
-    "mean_err_C": -0.55,
-    "p2p_ripple_C": 0.0
-   },
-   "duty_flight_mean": 0.85
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 0.55,
+   "mean_err_C": -0.3,
+   "p2p_ripple_C": 0.057
   },
-  "island C x2": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.21,
-    "mean_err_C": 0.0,
-    "p2p_ripple_C": 0.365
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 0.38,
-    "mean_err_C": -0.2,
-    "p2p_ripple_C": 0.044
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 0.55,
-    "mean_err_C": -0.55,
-    "p2p_ripple_C": 0.0
-   },
-   "duty_flight_mean": 0.85
+  "flight hold (600-900 s)": {
+   "max_err_C": 3.13,
+   "mean_err_C": -2.83,
+   "p2p_ripple_C": 0.01
   },
-  "island C /2": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.0,
-    "mean_err_C": 0.0,
-    "p2p_ripple_C": 0.0
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 0.38,
-    "mean_err_C": -0.19,
-    "p2p_ripple_C": 0.044
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 0.55,
-    "mean_err_C": -0.55,
-    "p2p_ripple_C": 0.0
-   },
-   "duty_flight_mean": 0.85
+  "duty_flight_mean": 1.0
+ },
+ "island isolation x2 worse": {
+  "bench hold (200-300 s)": {
+   "max_err_C": 0.07,
+   "mean_err_C": -0.0,
+   "p2p_ripple_C": 0.142
   },
-  "island R x2": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.16,
-    "mean_err_C": 0.01,
-    "p2p_ripple_C": 0.281
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 0.22,
-    "mean_err_C": -0.01,
-    "p2p_ripple_C": 0.022
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 0.13,
-    "mean_err_C": -0.13,
-    "p2p_ripple_C": 0.0
-   },
-   "duty_flight_mean": 0.43
+  "takeoff transient (300-420 s)": {
+   "max_err_C": 4.98,
+   "mean_err_C": -1.32,
+   "p2p_ripple_C": 1.913
   },
-  "island R /2 (heater too weak?)": {
-   "bench hold (200-300 s)": {
-    "max_err_C": 0.01,
-    "mean_err_C": 0.0,
-    "p2p_ripple_C": 0.017
-   },
-   "takeoff transient (300-420 s)": {
-    "max_err_C": 6.85,
-    "mean_err_C": -2.04,
-    "p2p_ripple_C": 2.001
-   },
-   "flight hold (600-900 s)": {
-    "max_err_C": 14.91,
-    "mean_err_C": -14.63,
-    "p2p_ripple_C": 0.01
-   },
-   "duty_flight_mean": 1.0
-  }
+  "flight hold (600-900 s)": {
+   "max_err_C": 13.04,
+   "mean_err_C": -12.76,
+   "p2p_ripple_C": 0.01
+  },
+  "duty_flight_mean": 1.0
  }
 }

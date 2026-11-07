@@ -148,7 +148,7 @@
    "pattern": "SW_3V3"
   },
   {
-   "netclass": "Power",
+   "netclass": "Supply",
    "pattern": "HEATER_LO"
   },
   {
@@ -202,6 +202,10 @@
   {
    "netclass": "USB",
    "pattern": "USB_DM_C"
+  },
+  {
+   "netclass": "Supply",
+   "pattern": "HEATER_MID"
   }
  ]
 }

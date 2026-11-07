@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "GPS-denied quadrotor flight controller: MCU")
-		(date "2026-11-06")
-		(rev "A")
+		(date "2026-11-07")
+		(rev "B")
 		(company "Daniel K (dvntekim)")
 		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")
 		(comment 2 "Pin map: PX4 FMUv6C (Pixhawk 6C) derivative, STM32H743VIT6 LQFP-100")

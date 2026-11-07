@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "GPS-denied quadrotor flight controller: Overview")
-		(date "2026-11-06")
-		(rev "A")
+		(date "2026-11-07")
+		(rev "B")
 		(company "Daniel K (dvntekim)")
 		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")
 		(comment 2 "Pin map: PX4 FMUv6C (Pixhawk 6C) derivative, STM32H743VIT6 LQFP-100")
@@ -332,7 +332,7 @@
 		)
 		(uuid "6f748987-0619-5ad8-b40f-fd29d97e7697")
 	)
-	(text "GPS-denied quadrotor flight controller, rev A (DRAFT UNTIL INDEPENDENT REVIEW)\n\nMCU: STM32H743VIT6, 480 MHz Cortex-M7, PX4 (NuttX). Pin map derived from Pixhawk FMUv6C.\nIMUs: ICM-45686 (SPI1, external 32 kHz clock) + BMI088 (SPI2). Baro: BMP581 (I2C4). IMU heater.\nStorage: microSD (SDMMC2) for logs, params and the RAPTOR policy.\nBuses: 2x CAN FD (TCAN1462V), TELEM1/TELEM2 with flow control, GPS/I2C, RC (CRSF), USB-C.\nMotors: M1-M4 on TIM1 (bidirectional DShot) via 8-pin ESC harness with telemetry and current; M5-M8 on AUX.\nPower: 2S-6S in, reverse-polarity FET, TVS, 5 V 3.5 A buck, ideal-diode USB backup, 3V3 buck, low-noise sensor LDO,\ncurrent-limited peripheral and CAN power.\nBoard: 38 x 38 mm, 30.5 mm M3 mount, 6-layer JLCPCB."
+	(text "GPS-denied quadrotor flight controller, rev B (DRAFT UNTIL INDEPENDENT REVIEW)\n\nMCU: STM32H743VIT6, 480 MHz Cortex-M7, PX4 (NuttX). Pin map derived from Pixhawk FMUv6C.\nIMUs: ICM-45686 (SPI1, external 32 kHz clock) + BMI088 (SPI2). Baro: BMP581 (I2C4). IMU heater on an isolated island (rev B).\nStorage: microSD (SDMMC2) for logs, params and the RAPTOR policy.\nBuses: 2x CAN FD (TCAN1462V), TELEM1/TELEM2 with flow control, GPS/I2C, RC (CRSF), USB-C.\nMotors: M1-M4 on TIM1 (bidirectional DShot) via 8-pin ESC harness with telemetry and current; M5-M8 on AUX.\nPower: 2S-6S in, reverse-polarity FET, TVS, 5 V 3.5 A buck, ideal-diode USB backup, 3V3 buck, low-noise sensor LDO,\ncurrent-limited peripheral and CAN power.\nBoard: 38 x 38 mm, 30.5 mm M3 mount, 6-layer JLCPCB."
 		(exclude_from_sim no)
 		(at 30 130 0)
 		(effects

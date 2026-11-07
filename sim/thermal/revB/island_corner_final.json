@@ -1,0 +1,162 @@
+{
+ "copper-free edge bridges, corner bridge 2.2 mm, 1.1 W": {
+  "design": "corner_final",
+  "kind": "slot",
+  "center": [
+   121.7,
+   82.3
+  ],
+  "ring": [
+   2.7,
+   6.7,
+   0,
+   []
+  ],
+  "heater_W": 1.1,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 46.2,
+    "imu_heater_full_C": 107.4,
+    "heater_lift_C": 61.2,
+    "mcu_C": 68.6
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 18.4,
+    "imu_heater_full_C": 56.1,
+    "heater_lift_C": 37.7,
+    "mcu_C": 26.4
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 40.6,
+    "imu_heater_full_C": 78.3,
+    "heater_lift_C": 37.7,
+    "mcu_C": 51.5
+   }
+  },
+  "holdable_window_C": [
+   46.2,
+   56.1
+  ],
+  "window_width_C": 10.0
+ },
+ "copper-free edge bridges, corner bridge 2.2 mm, 1.5 W": {
+  "design": "corner_final",
+  "kind": "slot",
+  "center": [
+   121.7,
+   82.3
+  ],
+  "ring": [
+   2.7,
+   6.7,
+   0,
+   []
+  ],
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 46.2,
+    "imu_heater_full_C": 129.7,
+    "heater_lift_C": 83.5,
+    "mcu_C": 74.4
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 18.4,
+    "imu_heater_full_C": 69.8,
+    "heater_lift_C": 51.5,
+    "mcu_C": 27.5
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 40.6,
+    "imu_heater_full_C": 92.1,
+    "heater_lift_C": 51.5,
+    "mcu_C": 52.5
+   }
+  },
+  "holdable_window_C": [
+   46.2,
+   69.8
+  ],
+  "window_width_C": 23.7
+ },
+ "copper-free edge bridges, corner bridge 3 mm, 1.1 W": {
+  "design": "corner_final",
+  "kind": "slot",
+  "center": [
+   121.7,
+   82.3
+  ],
+  "ring": [
+   2.7,
+   6.7,
+   0,
+   []
+  ],
+  "heater_W": 1.1,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 46.4,
+    "imu_heater_full_C": 102.0,
+    "heater_lift_C": 55.6,
+    "mcu_C": 68.7
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 18.5,
+    "imu_heater_full_C": 52.5,
+    "heater_lift_C": 34.0,
+    "mcu_C": 26.5
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 40.8,
+    "imu_heater_full_C": 74.8,
+    "heater_lift_C": 34.0,
+    "mcu_C": 51.5
+   }
+  },
+  "holdable_window_C": [
+   46.4,
+   52.5
+  ],
+  "window_width_C": 6.2
+ },
+ "copper-free edge bridges, corner bridge 3 mm, 1.5 W": {
+  "design": "corner_final",
+  "kind": "slot",
+  "center": [
+   121.7,
+   82.3
+  ],
+  "ring": [
+   2.7,
+   6.7,
+   0,
+   []
+  ],
+  "heater_W": 1.5,
+  "cases": {
+   "bench: 25C, still air, 4S 1.2A": {
+    "imu_heater_off_C": 46.4,
+    "imu_heater_full_C": 122.2,
+    "heater_lift_C": 75.9,
+    "mcu_C": 74.6
+   },
+   "flight cold: 15C, prop wash, 4S 1.2A": {
+    "imu_heater_off_C": 18.5,
+    "imu_heater_full_C": 64.9,
+    "heater_lift_C": 46.4,
+    "mcu_C": 27.6
+   },
+   "flight hot: 35C, prop wash, 6S 2.5A": {
+    "imu_heater_off_C": 40.8,
+    "imu_heater_full_C": 87.2,
+    "heater_lift_C": 46.4,
+    "mcu_C": 52.6
+   }
+  },
+  "holdable_window_C": [
+   46.4,
+   64.9
+  ],
+  "window_width_C": 18.5
+ }
+}

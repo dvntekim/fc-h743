@@ -18,7 +18,7 @@ GRID = 1.27
 STUB = 2.54
 CHAR_W = 1.05  # mm per character at 1.27 mm font
 ROOT_UUID = str(uuid.uuid5(uuid.NAMESPACE_URL, "fc-root"))
-REV = "A"
+REV = "B"
 TITLE = "GPS-denied quadrotor flight controller"
 DATE = datetime.date.today().isoformat()
 
@@ -509,9 +509,9 @@ def emit_root(sheets):
                                                                  [S("page"), str(i + 2)]]]]])
         items.append(text(f"{n} parts", sx + 2, sy + 5, f"root/n/{key}"))
     overview = (
-        "GPS-denied quadrotor flight controller, rev A (DRAFT UNTIL INDEPENDENT REVIEW)\n\n"
+        f"GPS-denied quadrotor flight controller, rev {REV} (DRAFT UNTIL INDEPENDENT REVIEW)\n\n"
         "MCU: STM32H743VIT6, 480 MHz Cortex-M7, PX4 (NuttX). Pin map derived from Pixhawk FMUv6C.\n"
-        "IMUs: ICM-45686 (SPI1, external 32 kHz clock) + BMI088 (SPI2). Baro: BMP581 (I2C4). IMU heater.\n"
+        "IMUs: ICM-45686 (SPI1, external 32 kHz clock) + BMI088 (SPI2). Baro: BMP581 (I2C4). IMU heater on an isolated island (rev B).\n"
         "Storage: microSD (SDMMC2) for logs, params and the RAPTOR policy.\n"
         "Buses: 2x CAN FD (TCAN1462V), TELEM1/TELEM2 with flow control, GPS/I2C, RC (CRSF), USB-C.\n"
         "Motors: M1-M4 on TIM1 (bidirectional DShot) via 8-pin ESC harness with telemetry and current; M5-M8 on AUX.\n"

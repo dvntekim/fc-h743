@@ -92,11 +92,31 @@ a FRAM the board lacks, old parameter names, an SD write stall caused by the mod
 | Same, island moved off the MCU, 1.5 W | 48–60 °C holdable window | set point 55 °C, heater 1.5 W |
 | PX4 heater loop model | ±0.55 °C with default gains; fails only if isolation is half the model's figure | measure isolation first on hardware; add a hardware over-temperature cut-off |
 
-Details in [revB_thermal.md](revB_thermal.md). Layout is the next step.
+Details in [revB_thermal.md](revB_thermal.md).
+
+## 13. Rev B, step 2: layout (rev-B-draft1)
+| Tool | Found | Changed |
+|---|---|---|
+| Island model, exact corner geometry | 1.5 W does not fit (two 2010s fill the 5.2 mm island width); 2.2 mm bridge beats 3 mm (10.0 vs 6.2 °C window at 1.1 W) | 2.2 mm corner bridge, ~1.1 W, set point 51 °C |
+| Over-temperature analysis | heater stuck on reaches ~110 °C in still air | TMP302A on the island, trips at 60 °C |
+| `update_pcb.py` (scripted "update PCB from schematic") | KiCad's GUI update is not scriptable headless | netlist → footprints, values, nets on the hand-finished board |
+| Freerouting 1.9 on the island, 3 placements | first two placements: IMU pads facing the board edge or the slot had no escape; the autorouter cannot see the copper-to-edge rule | heaters along the slot, IMU along the edge; 0.32 mm routing keepouts beside the slots |
+| Freerouting + local router, heater nets | parallel heaters alternate +5V/LO/LO/+5V and need a via the full bridge could not take | heaters in series (2 × 12 Ω): both nets cross on F.Cu with no via |
+| GND connectivity (`gnd_graph.py`) | the BMI088's GND pads face the edge with no via room; Bosch's footprint forbids copper under it | BMI088 stays under the MCU (rev A routing restored, `restore_bmi.py`); only the ICM-45686 is heated |
+| `cmpnet.py` against rev A | the autorouter had added stubs to USB, crystal and buck-boot nets | stubs removed; those nets match rev A exactly |
+| DRC / ERC / parity | — | 0 errors, 0 unconnected / 0 / 0 |
+| Island model on the routed copper | rev A no window; rev B 45.6–57.8 °C | — |
+| PX4 heater loop | ±0.55 °C at 51 °C; saturates below 83 % of the modelled isolation | REVIEW: measure isolation first |
+| atlc, IR drop | +1.1 % impedance beside a slot; +5V switches +7 mV | — |
+
+The layout took three placement passes and many hand fixes; the autorouter was the weak link
+(it cannot see edge-clearance rules and gives up in dense, locked regions). Placement by hand in
+the KiCad GUI, or an ML router, would likely have been faster.
 
 ## Open before ordering
 - Owner: licence choice, JLCPCB and second-fab DFM (logins), `SIMANTIC_TOKEN` secret, an independent
   reviewer.
-- Reviewer decisions: IMU heater, +5V route, inductor I_sat, diode temperature.
-- Bench: 32 kHz on PB10, sensor pins ≤ 0.3 V with the rail off, DShot telemetry port, 5 V load step,
-  IMU rotation.
+- Reviewer decisions: rev B island and heater margin, unheated BMI088, +5V route, inductor I_sat, diode temperature.
+- Rev B: JLCDFM on the rev B Gerbers.
+- Bench: island isolation (heater step) first, then 32 kHz on PB10, sensor pins ≤ 0.3 V with the rail off,
+  DShot telemetry port, 5 V load step, IMU rotation (`-R 14`).

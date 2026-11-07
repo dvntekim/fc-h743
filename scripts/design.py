@@ -53,7 +53,7 @@ RES_LCSC = {  # 0402 1% thick film
     "10k": "C25744", "20k": "C25765", "22k": "C25768", "33k": "C25779",
     "36k": "C43676", "47k": "C25792", "52.3k": "C26982", "53.6k": "C53398", "100k": "C25741",
     "147k": "C64171", "162k": "C54068", "453k": "C27009", "1M": "C26083", "9.09k": "C11549",
-    "6.04k": "C25981",
+    "6.04k": "C25981", "4.7k": "C25900",
 }
 CAP = {  # value -> (footprint, lcsc, voltage note)
     "10pF": (C0402, "C32949", "50V C0G"), "33pF": (C0402, "C1562", "50V C0G"), "12pF": (C0402, "C1547", "50V C0G"),
@@ -311,7 +311,7 @@ C("100nF", "+3V3_SENS", "GND", S, note="U20 VDD")
 C("100nF", "+3V3_SENS", "GND", S, note="U20 VDDIO")
 C("1uF", "+3V3_SENS", "GND", S, note="U20 bulk")
 R("10k", "IMU1_CS", "+3V3_SENS", S, note="CS idle-high while MCU boots")
-group("IMU 2: BMI088 on SPI2")
+group("IMU 2: BMI088 on SPI2 (rev B: stays on the main board, unheated; see docs/revB_thermal.md)")
 part("U21", "fc_custom:BMI088", "BMI088", "Package_LGA:Bosch_LGA-16_4.5x3mm_P0.5mm_LayoutBorder7x1y_ClockwisePinNumbering",
      "C194919", S, {14: "BMI_ACC_CS", 5: "BMI_GYRO_CS", 8: "SPI2_SCK", 9: "SPI2_MOSI", 15: "SPI2_MISO",
                     10: "SPI2_MISO", 7: "GND", 3: "+3V3_SENS", 2: "GND", 4: "GND", 11: "+3V3_SENS",
@@ -331,14 +331,20 @@ C("100nF", "+3V3_SENS", "GND", S, note="U22 VDD")
 C("100nF", "+3V3_SENS", "GND", S, note="U22 VDDIO")
 R("2.2k", "I2C4_SCL", "+3V3_SENS", S)
 R("2.2k", "I2C4_SDA", "+3V3_SENS", S)
-group("IMU heater")
-# IMU heater: 4 x 120R 1206 from +5V, ~0.83 W, PWM low-side switch
+group("IMU heater (rev B: on the isolated IMU island)")
+# Rev B: 2 x 12R 2010 (0.75 W parts) in SERIES from +5V = 1.08 W (0.54 W each), PWM low-side switch.
+# Series, not parallel: along the island the pads then run +5V, MID, MID, LO, so +5V and HEATER_LO
+# both reach the corner bridge on F.Cu with no via (parallel pads alternate +5V/LO/LO/+5V and one
+# net has to hop through the full inner layers of the bridge). docs/revB_thermal.md.
 part("Q2", "Transistor_FET:AO3400A", "AO3400A", "Package_TO_SOT_SMD:SOT-23", "C20917", S,
      {1: "HEATER_G", 2: "GND", 3: "HEATER_LO"})
-R("47", "HEATER_PWM", "HEATER_G", S)
+R("4.7k", "HEATER_PWM", "HEATER_G", S, note="4.7k so the TMP302 cut-off can override the MCU (0.7 mA)")
 R("100k", "HEATER_G", "GND", S, note="heater off while MCU boots")
-for i in range(4):
-    R("120", "+5V", "HEATER_LO", S, fp=R1206, lcsc="C17909", note="heater element, place around IMUs")
+R("12", "+5V", "HEATER_MID", S, fp="Resistor_SMD:R_2010_5025Metric", lcsc="C3013299",
+  note="heater element 1 of 2 in series, 0.54 W in a 0.75 W 2010, on the IMU island")
+R("12", "HEATER_MID", "HEATER_LO", S, fp="Resistor_SMD:R_2010_5025Metric", lcsc="C3013299",
+  note="heater element 2 of 2 in series, 0.54 W in a 0.75 W 2010, on the IMU island")
+nref("R"); nref("R")  # R46, R47 removed in rev B (4 x 1206 -> 2 x 2010)
 
 # ======================= STORAGE + USB =======================
 S = "storage_usb"
@@ -438,6 +444,14 @@ R("100", "BUZZER", "BUZZ_G", S)
 R("100k", "BUZZ_G", "GND", S)
 part("D20", "Device:D_Schottky", "B5819W", "Diode_SMD:D_SOD-123", "C8598", S, {1: "+5V", 2: "BUZZ_N"},
      note="buzzer flyback")
+group("IMU heater hardware cut-off (rev B)")
+# TMP302A on the island: OUT (open drain) pulls the heater gate low at >= 60 C (10 C hysteresis),
+# whatever the MCU is doing. TRIPSET1 = VS, TRIPSET0 = GND -> 60 C; HYSTSET = VS -> 10 C.
+# Heater set point 51 C (docs/revB_thermal.md): the trip sits 9 C above it, 25 C under the IMUs' limit.
+part("U23", "fc_custom:TMP302", "TMP302ADRLR", "Package_TO_SOT_SMD:SOT-563", "C2877557", "sensors",
+     {1: "GND", 6: "+3V3", 4: "+3V3", 3: "HEATER_G", 5: "+3V3", 2: "GND"},
+     note="heater over-temperature cut-off, 60 C")
+part("C62", "Device:C", "100nF", C0402, "C1525", "sensors", {1: "+3V3", 2: "GND"}, note="U23 VS", rating="16V X7R")
 group("Test points")
 for net in ["VBAT", "+5V", "+5V_FMU", "+5V_PERIPH", "+5V_CAN", "+3V3", "+3V3_SENS", "CAN1_H", "CAN1_L",
             "SPI1_SCK", "CONSOLE_TX", "NRST", "GND"]:
