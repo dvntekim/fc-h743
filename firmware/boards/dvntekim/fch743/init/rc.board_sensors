@@ -2,18 +2,23 @@
 #
 # dvntekim fch743 board sensors init
 #------------------------------------------------------------------------------
-# Both IMUs sit on the BOTTOM side, chip X along board -Y (left), so each is rotated
-# yaw 270 relative to the board frame (-R 6). Verify on first power-up:
-#   listener sensor_accel  -> z ~ -9.8 with the board flat, top side up.
+# Rev B: the ICM-45686 (U20) sits on the BOTTOM side of the heated, slotted corner island; the
+# BMI088 (U21) stays on the BOTTOM side under the MCU (unheated), where rev A had it.
+# PX4's drivers assume a top-side part (chip Z up), so a bottom-side part needs roll 180 plus the
+# yaw of its X axis in the board frame. Both footprints are at 0 deg, chip X along board -Y:
+#   ROLL_180_YAW_270 (-R 14) for both.
+# Rev A used yaw 270 alone (-R 6), which leaves Z inverted for a bottom-side part.
+# Verify on first power-up (REVIEW.md):
+#   listener sensor_accel  -> z ~ -9.8 with the board flat, top side up; tilt nose down -> x < 0.
 
 board_adc start
 
 # ICM-45686 on SPI1, 32 kHz reference clock from TIM2_CH3 into CLKIN
-icm45686 -s -b 1 -R 6 -C 32000 start
+icm45686 -s -b 1 -R 14 -C 32000 start
 
 # BMI088 on SPI2 (different vendor, own bus)
-bmi088 -A -s -b 2 -R 6 start
-bmi088 -G -s -b 2 -R 6 start
+bmi088 -A -s -b 2 -R 14 start
+bmi088 -G -s -b 2 -R 14 start
 
 # BMP581 on internal I2C4, SDO high -> 0x47
 bmp581 -I -b 4 -a 0x47 start

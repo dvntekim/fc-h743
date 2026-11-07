@@ -179,7 +179,7 @@ def solve(design, amb, h, sources, heater_w):
                 hm = rect_mask(x - 0.8, y - 0.8, x + 0.8, y + 0.8).ravel()
             else:
                 hm = pad_mask(ref).ravel()
-            q[:n] += heater_w / 4 * hm / hm.sum()
+            q[:n] += heater_w / len(HEATER_REFS) * hm / hm.sum()
     T = spla.spsolve(A.tocsc(), q) + amb
     if design.get("center"):
         cx, cy = design["center"]

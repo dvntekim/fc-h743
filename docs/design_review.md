@@ -89,15 +89,20 @@ Legend: **OK** meets the vendor guidance · **FIXED** failed and was changed in 
 **OPEN: the IMU heater cannot regulate.** The 0.86 W heater warms the whole copper-heavy board, so
 it lifts the IMUs by ~18 C in still air and ~7 C in prop wash. On the bench the board alone is
 above the 45 C set point; in flight at 25 C ambient the set point is out of reach. Rev A relies on
-PX4's thermal calibration (TC_*). Rev B: isolate the IMU island with routed slots and a narrow
-neck so the heater warms only the IMUs.
+PX4's thermal calibration (TC_*).
+
+**Rev B (rev-B-draft1): addressed in layout, simulated only.** The ICM-45686 moved onto a slotted
+corner island with a 1.08 W series heater and a 60 °C TMP302 cut-off. On the routed copper it has a
+45.6–57.8 °C holdable window (rev A: none) and PX4's loop holds 51 °C within ±0.55 °C while the
+island's isolation is at least 83 % of the model's. Details: [revB_thermal.md](revB_thermal.md).
 
 ## Power integrity (`sim/pi`) at worst-case currents
 | Net | Load | Drop | Result |
 |---|---|---|---|
 | VBAT_RAW, pads -> FET | 3 A | 56 mV | NOTE: one 13 mm hop on 0.5 oz In2 |
 | VBAT, FET -> buck VIN | 3 A | 20 mV | OK |
-| +5V, inductor -> TPS2553 switches | 1.3 A + 1.2 A (their limits) | 235 / 167 mV | OPEN: ~60 mm route; with the 5.09 V set point the switch outputs stay >= ~4.75 V at their limits. Rev B: direct trunk |
+| +5V, inductor -> TPS2553 switches | 1.3 A + 1.2 A (their limits) | rev A 235 / 167 mV; rev B 243 / 173 mV (heater 0.21 A shares the route) | OPEN: ~60 mm route; with the 5.09 V set point the switch outputs stay >= ~4.75 V at their limits. No trunk in rev B (no free corridor) |
+| +5V, inductor -> rev B heater (R44) | 0.21 A | 150 mV | OK: heater gets 4.94 V, 1.02 W instead of 1.08 W |
 | +3V3, inductor -> MCU / SD | 0.35 A | <= 46 mV | OK |
 
 ## Signal integrity (`sim/si`)

@@ -198,6 +198,13 @@ def symbols():
                    top=[], bottom=[(2, "GND", "power_in")], width=17.78,
                    desc="Current-limited power switch, adjustable limit, active-high EN",
                    fp="Package_TO_SOT_SMD:SOT-23-6"),
+        # TI SBOS493 (TMP302), Pin Functions (DRL)
+        box_symbol("TMP302", "U",
+                   left=[(1, "TRIPSET0", "input"), (6, "TRIPSET1", "input"), (4, "HYSTSET", "input")],
+                   right=[(3, "~{OUT}", "open_collector")],
+                   top=[(5, "VS", "power_in")], bottom=[(2, "GND", "power_in")], width=15.24,
+                   desc="Temperature switch, open-drain active-low output, trip 50-65 C (A grade)",
+                   fp="Package_TO_SOT_SMD:SOT-563"),
         pmos_powerdi(),
         lm66100_or(),
         bmi088_tristate(),

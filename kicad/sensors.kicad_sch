@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "GPS-denied quadrotor flight controller: Sensors")
-		(date "2026-11-06")
-		(rev "A")
+		(date "2026-11-07")
+		(rev "B")
 		(company "Daniel K (dvntekim)")
 		(comment 1 "DRAFT UNTIL INDEPENDENT REVIEW. Not for fabrication.")
 		(comment 2 "Pin map: PX4 FMUv6C (Pixhawk 6C) derivative, STM32H743VIT6 LQFP-100")
@@ -1535,6 +1535,183 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "fc_custom:TMP302"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -10.16 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "TMP302"
+				(at 10.16 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right top)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-563"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Temperature switch, open-drain active-low output, trip 50-65 C (A grade)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TMP302_0_1"
+				(rectangle
+					(start -10.16 7.62)
+					(end 10.16 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "TMP302_1_1"
+				(pin input line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "TRIPSET0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 2.54)
+					(name "TRIPSET1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "HYSTSET"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at 12.7 2.54 180)
+					(length 2.54)
+					(name "~{OUT}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 10.16 270)
+					(length 2.54)
+					(name "VS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -10.16 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "fc_custom:+3V3_SENS"
 			(power)
 			(pin_numbers
@@ -1897,6 +2074,134 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:+3V3"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3V3"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3V3_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54)
+						(xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 12.7 15.24)
@@ -1937,7 +2242,7 @@
 		)
 		(uuid "2ca8bb55-d37c-5e1d-9cdb-ec356d302203")
 	)
-	(text "IMU 2: BMI088 on SPI2"
+	(text "IMU 2: BMI088 on SPI2 (rev B: stays on the main board, unheated; see docs/revB_thermal.md)"
 		(exclude_from_sim no)
 		(at 166.525 16.74 0)
 		(effects
@@ -1978,7 +2283,7 @@
 	)
 	(rectangle
 		(start 167.43 104.944)
-		(end 292.9975 185.9865)
+		(end 292.08 173.8465)
 		(stroke
 			(width 0.15)
 			(type dash)
@@ -1989,7 +2294,7 @@
 		)
 		(uuid "151e7007-375c-5a13-bf23-dbe7fc2e36f0")
 	)
-	(text "IMU heater"
+	(text "IMU heater (rev B: on the isolated IMU island)"
 		(exclude_from_sim no)
 		(at 168.93 106.444 0)
 		(effects
@@ -2001,6 +2306,32 @@
 			(justify left top)
 		)
 		(uuid "43bd9846-45cf-51e1-8c45-0304792ae008")
+	)
+	(rectangle
+		(start 298.08 104.944)
+		(end 394.64 162.944)
+		(stroke
+			(width 0.15)
+			(type dash)
+			(color 120 120 120 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "fd712c44-d54f-598f-8348-f9dba692d82e")
+	)
+	(text "IMU heater hardware cut-off (rev B)"
+		(exclude_from_sim no)
+		(at 299.58 106.444 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "fa1a66cd-b35c-50a0-aae3-d9bdf5be9bfe")
 	)
 	(symbol
 		(lib_id "fc_custom:ICM-45686")
@@ -7008,7 +7339,7 @@
 				)
 			)
 		)
-		(property "Value" "47"
+		(property "Value" "4.7k"
 			(at 226.06 119.256 90)
 			(effects
 				(font
@@ -7034,7 +7365,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4.7k so the TMP302 cut-off can override the MCU (0.7 mA)"
 			(at 226.06 116.84 0)
 			(effects
 				(font
@@ -7043,7 +7374,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25118"
+		(property "LCSC" "C25900"
 			(at 226.06 116.84 0)
 			(effects
 				(font
@@ -7338,7 +7669,7 @@
 				)
 			)
 		)
-		(property "Value" "120"
+		(property "Value" "12"
 			(at 182.88 170.056 90)
 			(effects
 				(font
@@ -7346,7 +7677,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+		(property "Footprint" "Resistor_SMD:R_2010_5025Metric"
 			(at 182.88 167.64 0)
 			(effects
 				(font
@@ -7364,7 +7695,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "heater element, place around IMUs"
+		(property "Description" "heater element 1 of 2 in series, 0.54 W in a 0.75 W 2010, on the IMU island"
 			(at 182.88 167.64 0)
 			(effects
 				(font
@@ -7373,7 +7704,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C17909"
+		(property "LCSC" "C3013299"
 			(at 182.88 167.64 0)
 			(effects
 				(font
@@ -7485,7 +7816,7 @@
 		)
 		(uuid "64618f5e-2716-57ff-b1ef-01ae2d4410d8")
 	)
-	(global_label "HEATER_LO"
+	(global_label "HEATER_MID"
 		(shape bidirectional)
 		(at 189.23 167.64 0)
 		(fields_autoplaced yes)
@@ -7509,7 +7840,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 223.52 167.64 90)
+		(at 236.22 167.64 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7518,23 +7849,23 @@
 		(fields_autoplaced yes)
 		(uuid "4f3c7e91-85fc-5525-950a-23c8777fb304")
 		(property "Reference" "R45"
-			(at 223.52 165.224 90)
+			(at 236.22 165.224 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "120"
-			(at 223.52 170.056 90)
+		(property "Value" "12"
+			(at 236.22 170.056 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 223.52 167.64 0)
+		(property "Footprint" "Resistor_SMD:R_2010_5025Metric"
+			(at 236.22 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7543,7 +7874,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 223.52 167.64 0)
+			(at 236.22 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7551,8 +7882,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "heater element, place around IMUs"
-			(at 223.52 167.64 0)
+		(property "Description" "heater element 2 of 2 in series, 0.54 W in a 0.75 W 2010, on the IMU island"
+			(at 236.22 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7560,8 +7891,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C17909"
-			(at 223.52 167.64 0)
+		(property "LCSC" "C3013299"
+			(at 236.22 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7586,8 +7917,8 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 167.64)
-			(xy 217.17 167.64)
+			(xy 232.41 167.64)
+			(xy 229.87 167.64)
 		)
 		(stroke
 			(width 0)
@@ -7595,35 +7926,91 @@
 		)
 		(uuid "ccb22c5a-812e-5621-a116-073024008008")
 	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 217.17 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
+	(global_label "HEATER_MID"
+		(shape bidirectional)
+		(at 229.87 167.64 180)
 		(fields_autoplaced yes)
-		(uuid "7499a59b-2443-5919-9828-0a65141a6fc7")
-		(property "Reference" "#PWR0SE033"
-			(at 217.17 167.64 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4e55612c-3021-5138-bf44-e209e2078707")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 229.87 167.64 180)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
-			(at 211.995 167.64 90)
+	)
+	(wire
+		(pts
+			(xy 240.03 167.64)
+			(xy 242.57 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d66fca92-76c1-5488-89eb-ddd38cf22921")
+	)
+	(global_label "HEATER_LO"
+		(shape bidirectional)
+		(at 242.57 167.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5f0fc6d4-e8de-5a0b-a019-19008de09872")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 242.57 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" ""
-			(at 217.17 167.64 0)
+	)
+	(symbol
+		(lib_id "fc_custom:TMP302")
+		(at 327.66 137.16 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d638b927-c57a-53e0-be5d-bff0596c032e")
+		(property "Reference" "U23"
+			(at 317.5 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "TMP302ADRLR"
+			(at 337.82 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right top)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-563"
+			(at 327.66 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7632,7 +8019,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 217.17 167.64 0)
+			(at 327.66 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7640,8 +8027,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 217.17 167.64 0)
+		(property "Description" "heater over-temperature cut-off, 60 C"
+			(at 327.66 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2877557"
+			(at 327.66 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7650,7 +8046,99 @@
 			)
 		)
 		(pin "1"
-			(uuid "ceb4ccad-f716-5a5c-b0ea-d60f88e3cd43")
+			(uuid "9a8d180f-d708-515e-90dd-4be22fa0c6db")
+		)
+		(pin "2"
+			(uuid "e87b0d65-fb7e-5c90-9917-b5ca0a1c04cd")
+		)
+		(pin "3"
+			(uuid "b11569c0-3bdc-520f-96f8-8bc9daba04ff")
+		)
+		(pin "4"
+			(uuid "10b07d09-2607-5b66-ba41-cb105dc6fdc0")
+		)
+		(pin "5"
+			(uuid "20c3ee55-b3f0-512b-a763-d474e83beb5a")
+		)
+		(pin "6"
+			(uuid "19668347-d635-59b2-b71f-bad393280ddc")
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
+					(reference "U23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 314.96 134.62)
+			(xy 312.42 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7fa3a3a-9e7b-5cb1-a1d4-279436876e9e")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 312.42 134.62 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "359ff93e-caa8-58f7-8712-bf72eb35f047")
+		(property "Reference" "#PWR0SE033"
+			(at 312.42 134.62 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 307.245 134.62 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 312.42 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 312.42 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 312.42 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3ba61c7e-123b-58f8-a41b-dcd2216d5511")
 		)
 		(instances
 			(project "fc"
@@ -7663,137 +8151,66 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 167.64)
-			(xy 229.87 167.64)
+			(xy 314.96 137.16)
+			(xy 312.42 137.16)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d66fca92-76c1-5488-89eb-ddd38cf22921")
-	)
-	(global_label "HEATER_LO"
-		(shape bidirectional)
-		(at 229.87 167.64 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "5f0fc6d4-e8de-5a0b-a019-19008de09872")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 229.87 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 264.16 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bb832632-2cdc-50d0-9c75-afcc15ecf058")
-		(property "Reference" "R46"
-			(at 264.16 165.224 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "120"
-			(at 264.16 170.056 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 264.16 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 264.16 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "heater element, place around IMUs"
-			(at 264.16 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17909"
-			(at 264.16 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3f6844f4-5d8e-557a-9034-7d46b2f5c82c")
-		)
-		(pin "2"
-			(uuid "ebfca895-481c-5475-9af7-612ad3d9d778")
-		)
-		(instances
-			(project "fc"
-				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
-					(reference "R46")
-					(unit 1)
-				)
-			)
-		)
+		(uuid "bd7179c0-29b6-5694-9afc-fcb7841e875d")
 	)
 	(wire
 		(pts
-			(xy 260.35 167.64)
-			(xy 257.81 167.64)
+			(xy 314.96 139.7)
+			(xy 312.42 139.7)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4f1b9c47-e8eb-5b48-b02a-05a1b8992c80")
+		(uuid "871f89e9-3448-5b88-8f00-4c0efcff902c")
+	)
+	(wire
+		(pts
+			(xy 312.42 137.16)
+			(xy 312.42 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6781b170-25ae-5340-a0ab-65fb27e0a321")
+	)
+	(junction
+		(at 312.42 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ce437e69-b4f2-542a-a017-476a993f1e74")
+	)
+	(wire
+		(pts
+			(xy 312.42 137.16)
+			(xy 309.88 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c206958d-d7eb-5a2c-bb09-2d0cf0ab096a")
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 257.81 167.64 90)
+		(lib_id "power:+3V3")
+		(at 309.88 137.16 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7d73631e-942f-5f30-ac91-9f679db8fe2f")
+		(uuid "0c68662f-7e8f-5e96-b682-7cbce703ac0d")
 		(property "Reference" "#PWR0SE034"
-			(at 257.81 167.64 90)
+			(at 309.88 137.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7801,8 +8218,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
-			(at 252.635 167.64 90)
+		(property "Value" "+3V3"
+			(at 304.18 137.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7810,7 +8227,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 257.81 167.64 0)
+			(at 309.88 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7819,7 +8236,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 257.81 167.64 0)
+			(at 309.88 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7828,7 +8245,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 257.81 167.64 0)
+			(at 309.88 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7837,7 +8254,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "8eb2d55a-866d-5a9f-8879-0eb9e5707a90")
+			(uuid "55427d3b-5c3c-53ce-9d63-e7a89b32fba7")
 		)
 		(instances
 			(project "fc"
@@ -7850,18 +8267,18 @@
 	)
 	(wire
 		(pts
-			(xy 267.97 167.64)
-			(xy 270.51 167.64)
+			(xy 340.36 134.62)
+			(xy 342.9 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "224db75a-c4bb-5a05-a468-75887d4aaab1")
+		(uuid "1f2a79fe-c46a-576d-948a-70dd7bdf9f12")
 	)
-	(global_label "HEATER_LO"
+	(global_label "HEATER_G"
 		(shape bidirectional)
-		(at 270.51 167.64 0)
+		(at 342.9 134.62 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7869,9 +8286,9 @@
 			)
 			(justify left)
 		)
-		(uuid "c0293a29-2bb4-52c0-9b37-abbe68f9819d")
+		(uuid "0aa00fae-6f59-546d-ac83-9dfa3757d0c6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 270.51 167.64 0)
+			(at 342.9 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7881,106 +8298,29 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "Device:R")
-		(at 182.88 180.34 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "423867bc-2d13-5792-b884-93c22ede62e6")
-		(property "Reference" "R47"
-			(at 182.88 177.924 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "120"
-			(at 182.88 182.756 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 182.88 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 182.88 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "heater element, place around IMUs"
-			(at 182.88 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17909"
-			(at 182.88 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b4050bc-fdba-5f0b-9c51-82bffb4e4eb1")
-		)
-		(pin "2"
-			(uuid "d8bff9cd-51b4-5f8f-b534-6aeed92d4723")
-		)
-		(instances
-			(project "fc"
-				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
-					(reference "R47")
-					(unit 1)
-				)
-			)
-		)
-	)
 	(wire
 		(pts
-			(xy 179.07 180.34)
-			(xy 176.53 180.34)
+			(xy 327.66 127)
+			(xy 327.66 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a968650e-7a12-56a8-a726-3ffb3942ec01")
+		(uuid "2086f34f-280e-5751-88ec-9521314cfb83")
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 176.53 180.34 90)
+		(lib_id "power:+3V3")
+		(at 327.66 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "90104ccc-31e0-58f7-bdaf-7cfedf9d96f1")
+		(uuid "160dc546-1a1b-5579-b64c-7bb1e8edb629")
 		(property "Reference" "#PWR0SE035"
-			(at 176.53 180.34 90)
+			(at 327.66 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7988,8 +8328,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
-			(at 171.355 180.34 90)
+		(property "Value" "+3V3"
+			(at 327.66 120.904 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7997,7 +8337,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 176.53 180.34 0)
+			(at 327.66 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8006,7 +8346,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 176.53 180.34 0)
+			(at 327.66 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8015,7 +8355,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 176.53 180.34 0)
+			(at 327.66 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8024,7 +8364,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b5f906dc-ffbd-593b-9ea6-0ad7e679fe1d")
+			(uuid "5432c4e7-3bae-5c0e-92c0-591368488fd0")
 		)
 		(instances
 			(project "fc"
@@ -8037,34 +8377,318 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 180.34)
-			(xy 189.23 180.34)
+			(xy 327.66 147.32)
+			(xy 327.66 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "79958d3a-8a6e-53ab-8f2f-1e124d952ce4")
+		(uuid "66f14109-b244-5018-a9fc-ceaf45ffd56a")
 	)
-	(global_label "HEATER_LO"
-		(shape bidirectional)
-		(at 189.23 180.34 0)
+	(symbol
+		(lib_id "power:GND")
+		(at 327.66 149.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "06e78b3b-7576-51ed-9ce4-5e98ecf0dd9c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 189.23 180.34 0)
+		(uuid "e6f121dc-46a1-5731-b8fa-b6b2f0fed0a6")
+		(property "Reference" "#PWR0SE036"
+			(at 327.66 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 327.66 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 327.66 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 327.66 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 327.66 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "13f45b96-8db9-5aa2-b0c3-327249660a93")
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
+					(reference "#PWR0SE036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 375.92 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fc56fdb2-c12e-50bd-aa5a-adea481b86a4")
+		(property "Reference" "C62"
+			(at 375.92 113.408 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF"
+			(at 375.92 120.272 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 375.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 375.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "U23 VS"
+			(at 375.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 375.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Rating" "16V X7R"
+			(at 375.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "880ac445-312e-5a38-97b1-3282ea880521")
+		)
+		(pin "2"
+			(uuid "8b4d9aea-b207-5ecc-90ca-aeb9fc0f806d")
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
+					(reference "C62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 372.11 116.84)
+			(xy 369.57 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "896a6808-e387-5a62-81ee-aebff2f409d2")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 369.57 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "806649ce-8574-586b-99c2-65853b2e03ff")
+		(property "Reference" "#PWR0SE037"
+			(at 369.57 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 363.87 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 369.57 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 369.57 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 369.57 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fbe9be6a-7c2e-5f64-9913-8affa8f23e69")
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
+					(reference "#PWR0SE037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 379.73 116.84)
+			(xy 382.27 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22c49600-ad04-587a-86c0-10621c715970")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 382.27 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f16dd4db-2d9f-56f2-b285-b492e6b926bf")
+		(property "Reference" "#PWR0SE038"
+			(at 382.27 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 387.445 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 382.27 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 382.27 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 382.27 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "989cfebe-f7e0-54e4-8327-511b7d63b0e9")
+		)
+		(instances
+			(project "fc"
+				(path "/c925c53e-ab81-5e2d-9266-b2e375efba22/6b15443c-36b9-5faa-884b-30ad87a54898"
+					(reference "#PWR0SE038")
+					(unit 1)
+				)
 			)
 		)
 	)

@@ -35,50 +35,38 @@
  },
  {
   "net": "+5V",
-  "cells": 46440,
-  "barrels": 10,
+  "cells": 47029,
+  "barrels": 11,
   "sinks": {
    "U2.1": {
-    "drop_mV": 17.46,
-    "worst_mV": 17.55
+    "drop_mV": 17.69,
+    "worst_mV": 17.78
    },
    "U6.1": {
-    "drop_mV": 235.11,
-    "worst_mV": 235.24
+    "drop_mV": 242.6,
+    "worst_mV": 242.73
    },
    "U7.1": {
-    "drop_mV": 166.67,
-    "worst_mV": 166.87
+    "drop_mV": 173.48,
+    "worst_mV": 173.68
    },
    "R44.1": {
-    "drop_mV": 118.0,
-    "worst_mV": 118.01
-   },
-   "R45.1": {
-    "drop_mV": 67.82,
-    "worst_mV": 67.83
-   },
-   "R46.1": {
-    "drop_mV": 22.77,
-    "worst_mV": 22.77
-   },
-   "R47.1": {
-    "drop_mV": 94.95,
-    "worst_mV": 96.0
+    "drop_mV": 150.34,
+    "worst_mV": 150.38
    }
   },
-  "copper_loss_mW": 527.1,
+  "copper_loss_mW": 564.3,
   "max_current_density_A_per_mm2": {
-   "F": 429.0,
-   "In2": 510.8,
-   "In3": 1033.1,
-   "B": 415.7
+   "F": 436.1,
+   "In2": 532.0,
+   "In3": 1066.9,
+   "B": 430.7
   }
  },
  {
   "net": "+3V3",
-  "cells": 40627,
-  "barrels": 16,
+  "cells": 44957,
+  "barrels": 19,
   "sinks": {
    "U10.11": {
     "drop_mV": 43.96,
