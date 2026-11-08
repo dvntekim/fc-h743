@@ -113,8 +113,18 @@ How it was made: `scripts/design.py` (parts, nets, pin map) → `gen_lib.py` →
 
 ## Licence
 
-No licence has been chosen yet, so all rights are reserved by default. The owner is deciding
-between CERN-OHL-S-2.0 (strongly reciprocal) and CERN-OHL-P-2.0 (permissive) for the hardware.
+Copyright (c) 2026 Daniel Kim (dvntekim).
+
+| What | Licence | File |
+|---|---|---|
+| Hardware: `kicad/`, `fab/`, design docs in `docs/` | CERN-OHL-P-2.0 | [LICENSE](LICENSE) |
+| Firmware: `firmware/` (PX4 board port) | BSD-3-Clause, same as PX4 | [firmware/LICENSE](firmware/LICENSE) |
+| Scripts, simulations, CI: `scripts/`, `sim/`, `.github/`, `.kibot/` | MIT | [LICENSE-MIT](LICENSE-MIT) |
+
+Source location (CERN-OHL-P-2.0 section 3): https://github.com/dvntekim/fc-h743
+
+The board, its design history and the files in this repository may be used to train models,
+under the terms above.
 
 ## Ordering
 
